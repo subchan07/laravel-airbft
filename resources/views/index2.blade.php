@@ -29,7 +29,8 @@
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet" />
+    <!-- <link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet" /> -->
+    @vite(['public/assets/css/style1.css', 'resources/js/index2.js'])
 </head>
 
 <body>
@@ -63,17 +64,34 @@
             </section>
         @endif
 
-        <section class="product-cateogry">
-            {{-- <div class="d-flex flex-sm-row flex-column"> --}}
-            <div class="d-flex flex-row ">
+        <section class="product-category">
+            <button class="scroll-button left-button">
+                <i class='bx bx-chevron-left'></i> </button>
+            <div class="product-category-carousel">
+                <div class="product-category-carousel-inner">
+                    @foreach ($categoryProducts as $product)
+                        <div class="product-category-carousel-item">
+                            <a href="/product?category={{ $product->slug }}">
+                                <img loading="lazy" src="{{ asset('uploads/' . $product->thumbnail) }}"
+                                    class="custom-card" alt="Front Shop" />
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <button class="scroll-button right-button"> <i class='bx bx-chevron-right'></i> </button>
+        </section>
+
+
+
+        {{-- <div class="d-flex flex-row ">
                 @foreach ($categoryProducts as $product)
                     <a href="/product?category={{ $product->slug }}">
                         <img loading="lazy" src="{{ asset('uploads/' . $product->thumbnail) }}" class="full-width"
                             alt="Front Shop" />
                     </a>
                 @endforeach
-            </div>
-        </section>
+            </div> --}}
 
         @foreach ($homes as $key => $home)
             @if ($key > 0)
@@ -107,17 +125,31 @@
                     </section>
                 @endif
                 @if ($home->content != null && $home->category == 'review')
-                    <section class="position-relative">
-                        {{-- <div class="d-flex flex-sm-row flex-column"> --}}
+                    <section class="review">
+                        <button class="scroll-button left-button">
+                            <i class='bx bx-chevron-left'></i> </button>
+                        <div class="review-carousel">
+                            <div class="review-carousel-inner">
+                                @foreach ($home->content as $image)
+                                    <div class="review-carousel-item">
+                                        <img loading="lazy" src="{{ asset('uploads/' . $image->image) }}"
+                                            class="full-width" alt="Review" />
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <button class="scroll-button right-button"> <i class='bx bx-chevron-right'></i> </button>
+                    </section>
+                    {{-- <section class="position-relative">
                         <div class="d-flex flex-row">
                             @foreach ($home->content as $image)
                                 <div>
-                                    <img loading="lazy" src="{{ asset('uploads/' . $image->image) }}" class="full-width"
-                                        alt="Review" />
+                                    <img loading="lazy" src="{{ asset('uploads/' . $image->image) }}"
+                                        class="full-width" alt="Review" />
                                 </div>
                             @endforeach
                         </div>
-                    </section>
+                    </section> --}}
                 @endif
                 @if ($home->content != null && $home->category == 'product-catalog' && $home->content->image != null)
                     <section class="position-relative">
