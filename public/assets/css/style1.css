@@ -1890,6 +1890,15 @@ h6 {
     display: none;
 }
 
+.prodcut-category-carousel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.prodcut-category-carousel::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: none;
+}
+
 .product-category-carousel-inner {
     display: flex;
     align-items: center;
@@ -2015,10 +2024,13 @@ h6 {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .review-carousel-item img {
     width: 100%;
+    max-width: 85%;
+    height: auto;
 }
 
 .review .scroll-button {
