@@ -1851,8 +1851,8 @@ h6 {
 /*                              Product Category                              */
 /* -------------------------------------------------------------------------- */
 .product-category {
-    /* background-image: url("../img/product-background.jpg"); */
-    background-color: white;
+    background-image: url("../img/menu.jpg");
+    /* background-color: white; */
     height: 500px;
     background-size: contain;
     overflow: hidden;
@@ -1947,7 +1947,7 @@ h6 {
 }
 
 .review {
-    background-image: url('../img/review.jpg');
+    background-image: url("../img/review.jpg");
     height: 500px;
     background-size: contain;
     overflow: hidden;
