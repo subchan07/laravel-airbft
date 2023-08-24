@@ -65,7 +65,6 @@
         @endif
 
         <section class="product-category">
-            <div class="background-container"></div>
             <button class="scroll-button left-button">
                 <i class='bx bx-chevron-left'></i> </button>
             <div class="product-category-carousel">
@@ -127,7 +126,6 @@
                 @endif
                 @if ($home->content != null && $home->category == 'review')
                     <section class="review">
-                        <div class="background-container"></div>
                         <button class="scroll-button left-button">
                             <i class='bx bx-chevron-left'></i> </button>
                         <div class="review-carousel">
