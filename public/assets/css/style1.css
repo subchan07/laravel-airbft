@@ -1851,12 +1851,27 @@ h6 {
 /*                              Product Category                              */
 /* -------------------------------------------------------------------------- */
 .product-category {
-    background-image: url("../img/menu.jpg");
+    /* background-image: url("../img/menu.jpg"); */
     /* background-color: white; */
-    height: 500px;
+    height: 66vh;
     background-size: contain;
     overflow: hidden;
     position: relative;
+}
+
+.product-category .background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/menu.jpg");
+    background-size: cover; /* Adjust to your preference */
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1; /* Adjust the opacity if needed */
+    pointer-events: none; /* Allow interaction with content behind */
+    z-index: -1; /* Place the background behind content */
 }
 
 .product-category-carousel {
@@ -1947,11 +1962,26 @@ h6 {
 }
 
 .review {
-    background-image: url("../img/review.jpg");
-    height: 500px;
+    /* background-image: url("../img/review.jpg"); */
+    height: 66vh;
     background-size: contain;
     overflow: hidden;
     position: relative;
+}
+
+.review .background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/review.jpg");
+    background-size: cover; /* Adjust to your preference */
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 1; /* Adjust the opacity if needed */
+    pointer-events: none; /* Allow interaction with content behind */
+    z-index: -1; /* Place the background behind content */
 }
 
 .review-carousel {
