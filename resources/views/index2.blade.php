@@ -40,13 +40,13 @@
 
     <main id="main">
         <!-- Hero Section - Home Page -->
-        <section id="hero" class="hero button-bottom-right">
+        <section id="hero" class="hero button-center-right">
 
             <img loading="lazy" src="{{ asset('uploads/' . $header->content->image) }}" id="hero-bg"
                 alt="Hero Bg Desktop" />
 
             @if ($header->content != null)
-                <div class="button-bottom-right-item">
+                <div class="button-center-right-item">
                     <a href="{{ $header->slug }}" class="button-action">BOOK NOW</a>
                 </div>
             @endif
@@ -58,7 +58,7 @@
                 <img loading="lazy" src="{{ asset('uploads/' . $homes[0]->content->image) }}" class="full-width"
                     alt="Front Shop" />
 
-                <div class="button-bottom-center-item">
+                <div class="button-center-center-item">
                     <a href="{{ $homes[0]->slug }}" class="button-action">SHOP NOW</a>
                 </div>
             </section>
