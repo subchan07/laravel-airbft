@@ -1928,12 +1928,14 @@ h6 {
     left: 50%;
     transform: translateX(-50%);
     opacity: 0; /* Initially hide the overlay image */
-    transition: opacity 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     z-index: -1; /* Place the overlay image below the main image */
 }
 
 .image-container:hover .img-hover {
     opacity: 1; /* Show the overlay image on hover */
+    z-index: 1;
+    transform: translate(-50%, -10px);
 }
 .image-container:hover .img {
     opacity: 0;
