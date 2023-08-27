@@ -14,3 +14,21 @@ leftButton.onclick = () => {
 rightButton.onclick = () => {
     carousel.scrollLeft += cardItem.clientWidth;
 };
+
+const reviewCarousel = document.querySelector(".review-carousel");
+const leftButtonReview = /**@type {HTMLButtonElement} */ (
+    document.querySelector(".review .left-button")
+);
+const rightButtonReview = /**@type {HTMLButtonElement} */ (
+    document.querySelector(".review .right-button")
+);
+
+const cardItemReview = document.querySelector(".review-caousel-item");
+
+leftButtonReview.onclick = () => {
+    reviewCarousel.scrollLeft -= cardItem.clientWidth;
+};
+
+rightButtonReview.onclick = () => {
+    reviewCarousel.scrollLeft += cardItem.clientWidth;
+};
