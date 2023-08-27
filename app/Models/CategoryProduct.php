@@ -13,6 +13,10 @@ class CategoryProduct extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+        'thumbnail', 'hover_thumbnail'
+    ];
+
     public function product(): HasMany
     {
         return $this->hasMany(Product::class);

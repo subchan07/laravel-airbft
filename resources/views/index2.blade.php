@@ -42,8 +42,7 @@
         <!-- Hero Section - Home Page -->
         <section id="hero" class="hero button-center-right">
 
-            <img loading="lazy" src="{{ asset('uploads/' . $header->content->image) }}" id="hero-bg"
-                alt="Hero Bg Desktop" />
+            <img loading="lazy" src="{{ asset('uploads/' . $header->content->image) }}" id="hero-bg" alt="Hero Bg Desktop" />
 
             @if ($header->content != null)
                 <div class="button-center-right-item">
@@ -55,8 +54,7 @@
 
         @if ($homes[0]->content != null)
             <section class="position-relative button-bottom-center">
-                <img loading="lazy" src="{{ asset('uploads/' . $homes[0]->content->image) }}" class="full-width"
-                    alt="Front Shop" />
+                <img loading="lazy" src="{{ asset('uploads/' . $homes[0]->content->image) }}" class="full-width" alt="Front Shop" />
 
                 <div class="button-center-center-item">
                     <a href="{{ $homes[0]->slug }}" class="button-action">SHOP NOW</a>
@@ -72,9 +70,10 @@
                 <div class="product-category-carousel-inner">
                     @foreach ($categoryProducts as $product)
                         <div class="product-category-carousel-item">
-                            <a href="/product?category={{ $product->slug }}">
-                                <img loading="lazy" src="{{ asset('uploads/' . $product->thumbnail) }}"
-                                    class="custom-card" alt="Front Shop" />
+                            <a href="/product?category={{ $product->slug }}" class="image-container">
+                                <img loading="lazy" src="{{ asset('uploads/' . $product->thumbnail) }}" class="custom-card img" alt="Front Shop" />
+                                <img loading="lazy" src="{{ asset('uploads/' . ($product->hover_thumbnail ?: $product->thumbnail)) }}"
+                                    class="img-hover custom-card" alt="Hover Product">
                             </a>
                         </div>
                     @endforeach
@@ -98,8 +97,7 @@
             @if ($key > 0)
                 @if ($home->content != null && $home->category == 'shop' && $home->content->image != null)
                     <section class="position-relative button-bottom-center">
-                        <img loading="lazy" src="{{ asset('uploads/' . $homes->content->image) }}" class="full-width"
-                            alt="Front Shop" />
+                        <img loading="lazy" src="{{ asset('uploads/' . $homes->content->image) }}" class="full-width" alt="Front Shop" />
 
                         <div class="button-bottom-center-item">
                             <a href="{{ $homes->slug }}" class="button-action">SHOP NOW</a>
@@ -108,8 +106,7 @@
                 @endif
                 @if ($home->content != null && $home->category == 'article' && $home->content->image != null)
                     <section class="position-relative button-center-right">
-                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width"
-                            alt="Front Shop" />
+                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width" alt="Front Shop" />
                         <div class="button-center-right-item">
                             <a href="{{ $home->slug }}" class="button-action">READ MORE</a>
                         </div>
@@ -117,8 +114,7 @@
                 @endif
                 @if ($home->content != null && $home->category == 'call-us-now' && $home->content->image != null)
                     <section class="position-relative button-bottom-center">
-                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width"
-                            alt="Call Us Now" />
+                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width" alt="Call Us Now" />
                         <div class="button-bottom-center-item">
                             <a href="https://api.whatsapp.com/send?phone={{ $home->content->no_telp }}&text={{ $home->content->text == null ? '' : $home->content->text }}"
                                 target="_blank" class="button-action">CALL US NOW</a>
@@ -134,8 +130,7 @@
                             <div class="review-carousel-inner">
                                 @foreach ($home->content as $image)
                                     <div class="review-carousel-item">
-                                        <img loading="lazy" src="{{ asset('uploads/' . $image->image) }}"
-                                            class="full-width" alt="Review" />
+                                        <img loading="lazy" src="{{ asset('uploads/' . $image->image) }}" class="full-width" alt="Review" />
                                     </div>
                                 @endforeach
                             </div>
@@ -156,16 +151,14 @@
                 @if ($home->content != null && $home->category == 'product-catalog' && $home->content->image != null)
                     <section class="position-relative">
                         <a href="/product/catalogue/{{ $home->id }}">
-                            <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}"
-                                class="full-width" alt="Product Catalog" />
+                            <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width" alt="Product Catalog" />
                         </a>
                     </section>
                 @endif
                 @if ($home->content != null && $home->category == 'image' && $home->content->image != null)
                     <section class="position-relative">
                         <div>
-                            <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}"
-                                class="full-width" alt="Front Shop" />
+                            <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width" alt="Front Shop" />
                         </div>
                     </section>
                 @endif
