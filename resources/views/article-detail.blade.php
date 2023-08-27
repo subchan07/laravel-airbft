@@ -39,10 +39,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center"
-            style="
-          background-image: url('https://www.airbft.com/wp-content/themes/songjiang/images/s1.jpg');
-        ">
+        <div class="breadcrumbs d-flex align-items-center news-bg">
         </div>
         <!-- End Breadcrumbs -->
 
@@ -69,8 +66,7 @@
                             </div>
 
                             <div class="post-img">
-                                <img src="{{ asset('uploads/' . $article->cover_image) }}" alt=""
-                                    class="img-fluid" />
+                                <img src="{{ asset('uploads/' . $article->cover_image) }}" alt="" class="img-fluid" />
                             </div>
 
                             <div class="content">
@@ -79,12 +75,11 @@
                                         {!! $content->content !!}
                                     @else
                                         @if ($content->type == 'picture')
-                                            <img src="{{ asset('uploads/' . $content->content) }}" width="100%"
-                                                class="mb-3 img-fluid" alt="">
+                                            <img src="{{ asset('uploads/' . $content->content) }}" width="100%" class="mb-3 img-fluid"
+                                                alt="">
                                         @else
                                             @foreach (json_decode($content->content) as $item)
-                                                <img src="{{ asset('uploads/' . $item) }}" width="100%"
-                                                    class=" mb-3 img-fluid" alt="">
+                                                <img src="{{ asset('uploads/' . $item) }}" width="100%" class=" mb-3 img-fluid" alt="">
                                             @endforeach
                                         @endif
                                     @endif
@@ -111,8 +106,7 @@
                                     <div class="mt-3">
                                         @foreach ($recentPosts as $recent)
                                             <div class="post-item mt-3">
-                                                <img src="{{ asset('uploads/' . $recent->cover_image) }}"
-                                                    alt="" class="flex-shrink-0" />
+                                                <img src="{{ asset('uploads/' . $recent->cover_image) }}" alt="" class="flex-shrink-0" />
                                                 <div>
                                                     <h4>
                                                         <a href="/article/{{ $recent->slug }}"

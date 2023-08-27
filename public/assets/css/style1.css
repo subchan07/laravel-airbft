@@ -2134,3 +2134,12 @@ h6 {
         height: auto;
     }
 }
+
+.news-bg {
+    background-image: url("../img/News.jpg");
+}
+
+.product-bg {
+    background-image: url("../img/shop.jpg");
+    background-size: 100% 100%;
+}

@@ -39,10 +39,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center"
-            style="
-          background-image: url('https://www.airbft.com/wp-content/themes/songjiang/images/s1.jpg');
-        ">
+        <div class="breadcrumbs d-flex align-items-center news-bg" ">
             <!-- <div class="container position-relative d-flex flex-column align-items-center">
           <h2>Blog</h2>
           <ol>
@@ -60,91 +57,87 @@
                     <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
                         <div class="row gy-5 posts-list">
 
-                            @if ($articles->count())
-                                @foreach ($articles as $article)
-                                    <div class="col-md-4 col-sm-6">
-                                        <article class="d-flex flex-column">
-                                            <div class="post-img">
-                                                <img src="{{ asset('uploads/' . $article->cover_image) }}"
-                                                    alt="" class="img-fluid" />
-                                            </div>
-                                            <div class="post-content">
-                                                <div class="meta-top">
-                                                    <ul>
-                                                        <!-- <li class="tag">News</li> -->
-                                                        <li class="d-flex align-items-center date">
-                                                            <i class="bi bi-calendar3"></i>{{ $article->date_publish }}
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="content">
-                                                    <h2 class="title">
-                                                        <a href="/article/{{ $article->slug }}"
-                                                            title="{{ $article->title }}">{{ $article->title }}</a>
-                                                    </h2>
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                    <!-- End post list item -->
-                                @endforeach
-                            @else
-                                <div class="col-12">
-                                    <h4 class="text-center">No article found.</h4>
-                                </div>
-                            @endif
-
+                              @if ($articles->count())
+            @foreach ($articles as $article)
+                <div class="col-md-4 col-sm-6">
+                    <article class="d-flex flex-column">
+                        <div class="post-img">
+                            <img src="{{ asset('uploads/' . $article->cover_image) }}" alt="" class="img-fluid" />
                         </div>
-                        <!-- End blog posts list -->
+                        <div class="post-content">
+                            <div class="meta-top">
+                                <ul>
+                                    <!-- <li class="tag">News</li> -->
+                                    <li class="d-flex align-items-center date">
+                                        <i class="bi bi-calendar3"></i>{{ $article->date_publish }}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="content">
+                                <h2 class="title">
+                                    <a href="/article/{{ $article->slug }}" title="{{ $article->title }}">{{ $article->title }}</a>
+                                </h2>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <!-- End post list item -->
+            @endforeach
+        @else
+            <div class="col-12">
+                <h4 class="text-center">No article found.</h4>
+            </div>
+            @endif
 
-                        {{-- <div class="blog-pagination">
+        </div>
+        <!-- End blog posts list -->
+
+        {{-- <div class="blog-pagination">
                             <ul class="justify-content-center">
                                 <li><a href="#">1</a></li>
                                 <li class="active"><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
                             </ul>
                         </div> --}}
-                        <!-- End blog pagination -->
-                    </div>
+        <!-- End blog pagination -->
+        </div>
 
-                    <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
-                        <div class="sidebar ps-lg-4">
-                            {{-- <div class="sidebar-item search-form">
+        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="sidebar ps-lg-4">
+                {{-- <div class="sidebar-item search-form">
                                 <h3 class="sidebar-title">Search</h3>
                                 <form action="" class="mt-3">
                                     <input type="search" />
                                     <button type="submit"><i class="bi bi-search"></i></button>
                                 </form>
                             </div> --}}
-                            <!-- End sidebar search formn-->
+                <!-- End sidebar search formn-->
 
-                            @if ($recentPosts->count())
-                                <div class="sidebar-item recent-posts">
-                                    <h3 class="sidebar-title">Recent Posts</h3>
+                @if ($recentPosts->count())
+                    <div class="sidebar-item recent-posts">
+                        <h3 class="sidebar-title">Recent Posts</h3>
 
-                                    <div class="mt-3">
-                                        @foreach ($recentPosts as $recent)
-                                            <div class="post-item mt-3">
-                                                <img src="{{ asset('uploads/' . $recent->cover_image) }}"
-                                                    alt="" class="flex-shrink-0" />
-                                                <div>
-                                                    <h4>
-                                                        <a href="/article/{{ $recent->slug }}"
-                                                            title="{{ $recent->title }}">{{ $recent->title }}</a>
-                                                    </h4>
-                                                    <!-- <p class="time">Jan 1, 2020</p> -->
-                                                </div>
-                                            </div>
-                                            <!-- End recent post item-->
-                                        @endforeach
-
+                        <div class="mt-3">
+                            @foreach ($recentPosts as $recent)
+                                <div class="post-item mt-3">
+                                    <img src="{{ asset('uploads/' . $recent->cover_image) }}" alt="" class="flex-shrink-0" />
+                                    <div>
+                                        <h4>
+                                            <a href="/article/{{ $recent->slug }}" title="{{ $recent->title }}">{{ $recent->title }}</a>
+                                        </h4>
+                                        <!-- <p class="time">Jan 1, 2020</p> -->
                                     </div>
                                 </div>
-                            @endif
+                                <!-- End recent post item-->
+                            @endforeach
 
-                            <!-- End sidebar recent posts-->
+                        </div>
+                    </div>
+                @endif
 
-                            {{-- <div class="sidebar-item tags">
+                <!-- End sidebar recent posts-->
+
+                {{-- <div class="sidebar-item tags">
                                 <h3 class="sidebar-title">Tags</h3>
                                 <ul class="mt-3">
                                     <li><a href="#">App</a></li>
@@ -159,12 +152,12 @@
                                     <li><a href="#">Marketing</a></li>
                                 </ul>
                             </div> --}}
-                            <!-- End sidebar tags-->
-                        </div>
-                        <!-- End Blog Sidebar -->
-                    </div>
-                </div>
+                <!-- End sidebar tags-->
             </div>
+            <!-- End Blog Sidebar -->
+        </div>
+        </div>
+        </div>
         </section>
         <!-- End Blog Section -->
     </main>
