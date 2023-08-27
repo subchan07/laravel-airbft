@@ -1919,6 +1919,24 @@ h6 {
     scroll-snap-align: start;
     text-align: center;
     transition: transfrom 0.3s ease-in-out;
+    position: relative;
+}
+
+.product-category .image-container .img-hover {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0; /* Initially hide the overlay image */
+    transition: opacity 0.3s ease-in-out;
+    z-index: -1; /* Place the overlay image below the main image */
+}
+
+.image-container:hover .img-hover {
+    opacity: 1; /* Show the overlay image on hover */
+}
+.image-container:hover .img {
+    opacity: 0;
 }
 
 .product-category-carousel-item img {

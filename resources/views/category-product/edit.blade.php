@@ -34,25 +34,33 @@
                         <div class="card-body">
                             <p id="errorListFormUpdateCategory"></p>
 
-                            <form id="formUpdateCategory"
-                                action="{{ route('category-product.update', ['category' => $category->slug]) }}"
+                            <form id="formUpdateCategory" action="{{ route('category-product.update', ['category' => $category->slug]) }}"
                                 onsubmit="formUpdateCategory(event, this)">
                                 @method('put')
                                 <div class="form-group">
                                     <label for="name">Category Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" autofocus
-                                        autocomplete="off" value="{{ old('name', $category->name) }}" required>
+                                    <input type="text" name="name" id="name" class="form-control" autofocus autocomplete="off"
+                                        value="{{ old('name', $category->name) }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="thumbnail">Thumbnail</label>
                                     @if ($category != null && $category->thumbnail != null)
-                                        <button type="button" class="badge badge-dark modalImagePreview float-right"
-                                            data-toggle="modal" data-target="#modal-image-preview"
-                                            data-altimg="Thumbnail {{ $category->name }}"
+                                        <button type="button" class="badge badge-dark modalImagePreview float-right" data-toggle="modal"
+                                            data-target="#modal-image-preview" data-altimg="Thumbnail {{ $category->name }}"
                                             data-srcimg="{{ asset('uploads/' . $category->thumbnail) }}">Old
                                             image</button>
                                     @endif
                                     <input type="file" name="thumbnail" id="thumbnail" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hover_thumbnail">Hover Thumnail</label>
+                                    @if ($category != null && $category->hover_thumbnail != null)
+                                        <button type="button" class="badge badge-dark modalImagePreview float-right" data-toggle="modal"
+                                            data-target="#modal-image-preview" data-altimg="Hover Thumbnail {{ $category->name }}"
+                                            data-srcimg="{{ asset('uploads/' . $category->hover_thumbnail) }}">Old
+                                            image</button>
+                                    @endif
+                                    <input type="file" name="hover_thumbnail" id="hover_thumbnail" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
@@ -62,8 +70,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <a href="{{ route('category-product.index') }}" id="btnCancelFormUpdateCategory"
-                                            class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Back</a>
+                                        <a href="{{ route('category-product.index') }}" id="btnCancelFormUpdateCategory" class="btn btn-secondary"><i
+                                                class="fa fa-chevron-left"></i> Back</a>
                                         <button type="submit" class="btn btn-success float-right">Edit</button>
                                     </div>
                                 </div>
@@ -114,6 +122,7 @@
         });
 
         function formUpdateCategory(event, form) {
+
             event.preventDefault();
             $.ajax({
                 type: "POST",

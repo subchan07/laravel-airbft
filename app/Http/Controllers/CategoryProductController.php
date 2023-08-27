@@ -31,10 +31,12 @@ class CategoryProductController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'thumbnail' => 'image|file|mimes:png,jpg,jpeg',
-            'description' => 'required'
+            'description' => 'required',
+            'hover_thumbnail' => ['image', 'mimes:png,jpg,jpeg']
         ]);
 
         if ($request->file('thumbnail')) {
@@ -49,6 +51,15 @@ class CategoryProductController extends Controller
             $validatedData['thumbnail'] = "product-images/category/" . $newFileName;
         } else {
             $validatedData['thumbnail'] = null;
+        }
+
+        if ($request->hasFile('hover_thumbnail')) {
+            $file = $request->file('hover_thumbnail');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('uploads/product-images/category'); // Set your desired upload directory
+
+            $file->move($destinationPath, $filename);
+            $validatedData['hover_thumbnail'] = "product-images/category/$filename";
         }
         // $validatedData['user_id'] = \auth()->user()->id;
 
@@ -73,7 +84,8 @@ class CategoryProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'thumbnail' => 'image|file|mimes:png,jpg,jpeg',
-            'description' => 'required'
+            'description' => 'required',
+            'hover_thumbnail' => 'image|mimes:png,jpg,jpeg'
         ]);
 
         $slug = SlugService::createSlug(CategoryProduct::class, 'slug', $request->name);
@@ -96,6 +108,19 @@ class CategoryProductController extends Controller
             }
         } else {
             $validatedData['thumbnail'] = $category->thumbnail ?? null;
+        }
+        if ($request->hasFile('hover_thumbnail')) {
+            $file = $request->file('hover_thumbnail');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $destinationPath = public_path('uploads/product-images/category'); // Set your desired upload directory
+
+            $file->move($destinationPath, $filename);
+
+            $validatedData['hover_thumbnail'] = "product-images/category/$filename";
+
+            if ($category->hover_thumbnail != null && \file_exists(\public_path('uploads/') . $category->hover_thumbnail)) {
+                \unlink(\public_path('uploads/') . $category->hover_thumbnail);
+            }
         }
 
         CategoryProduct::where('id', $category->id)->update($validatedData);

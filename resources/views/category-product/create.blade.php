@@ -34,16 +34,19 @@
                         <div class="card-body">
                             <p id="errorListFormNewCategory"></p>
 
-                            <form id="formNewCategory" action="{{ route('category-product.store') }}"
-                                onsubmit="formAddNewCategory(event, this)" enctype="multipart/form-data">
+                            <form id="formNewCategory" action="{{ route('category-product.store') }}" onsubmit="formAddNewCategory(event, this)"
+                                enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="name">Category Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" autofocus
-                                        autocomplete="off" required>
+                                    <input type="text" name="name" id="name" class="form-control" autofocus autocomplete="off" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="thumbnail">Thumbnail</label>
                                     <input type="file" name="thumbnail" id="thumbnail" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="hover_thumbnail">Hover Thumbnail</label>
+                                    <input type="file" name="hover_thumbnail" id="hover_thumbnail" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
@@ -52,8 +55,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <a href="{{ route('category-product.index') }}" class="btn btn-secondary"><i
-                                                class="fas fa-chevron-left"></i> Back</a>
+                                        <a href="{{ route('category-product.index') }}" class="btn btn-secondary"><i class="fas fa-chevron-left"></i>
+                                            Back</a>
                                         <button type="submit" class="btn btn-success float-right">Create</button>
                                     </div>
                                 </div>
