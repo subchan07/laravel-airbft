@@ -13,6 +13,7 @@ use App\Models\CategoryProduct;
 use App\Models\HomePage;
 use App\Models\MainPage;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,14 +64,25 @@ Route::get('/article/{article:slug}', function (Article $article) {
     return view('article-detail', compact('article', 'recentPosts'));
 });
 
-Route::get('/product', function () {
+Route::get('/product', function (Request $request) {
+    $query = $request->input('search');
+    $sort = $request->input('sort', 'abjad');
+
     $categoryProducts = CategoryProduct::all();
 
     if (\request('category')) {
         $category = CategoryProduct::firstWhere('slug', \request('category'));
     }
 
-    $products = Product::with(['productImages', 'category'])->filter(request(['q', 'category']))->paginate(9)->withQueryString();
+    $products = Product::with(['productImages', 'category'])->filter(request(['q', 'category']))->where('name', 'like', "%$query%")->when($sort === 'price', function ($query) {
+        $query->orderBy('price');
+    })
+        ->when($sort === 'price_desc', function ($query) {
+            $query->orderBy('price', 'desc');
+        })
+        ->when($sort === 'abjad', function ($query) {
+            $query->orderBy('name');
+        })->paginate(9)->withQueryString();
     return view('product', compact('categoryProducts', 'products'));
 });
 

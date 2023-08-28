@@ -20,7 +20,8 @@
         rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/new/font-awesome/4.7.0/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('assets/new/font-awesome/4.7.0/css/font-awesome.min.css') }}" type="text/css"
+        rel="stylesheet" />
     <link href="{{ asset('assets/new/css/ionicons.min.css') }}" type="text/css" rel="stylesheet" />
     <!-- Owl Css -->
     <link href="{{ asset('assets/new/css/owl.carousel.min.css') }}" type="text/css" rel="stylesheet" />
@@ -58,26 +59,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-9 col-lg-8 col-md-12">
-                    <div class="shop-options d-sm-flex justify-content-between align-items-center">
-                        <div class="sorting-option">
-                            {{-- <select class="sorting-items" name="category">
-                                <option value="menu_order" selected="selected">
-                                    Default sorting
-                                </option>
-                                <option value="price">Sort by price: low to high</option>
-                                <option value="price-desc">Sort by price: high to low</option>
-                            </select> --}}
-                        </div>
-                        {{-- <div class="showing-items">
+                    <form action="">
+                        <div class="shop-options d-sm-flex justify-content-between align-items-center">
+                            <input type="search" name="search" value="{{ request('search') }}"
+                                placeholder="Search...."
+                                style="  padding: 8px;
+                        border: 1px solid #ccc;
+                        border-radius: 6px;
+                        width: 250px;">
+                            <div class="sorting-option">
+                                Urutkan
+                                <select class="sorting-items" name="sort" onchange="this.form.submit()"
+                                    style="background-color: white; border-radius:6px">
+                                    <option value="abjad" @selected(request('sort') === 'abjad')>Alphabetical</option>
+                                    <option value="price" @selected(request('sort') === 'price')>Harga: rendah ke tinggi</option>
+                                    <option value="price-desc" @selected(request('sort') === 'price-desc')>Harga: tinggi ke rendah
+                                    </option>
+                                </select>
+                            </div>
+                            {{-- <div class="showing-items">
                             <p>Showing 1-9 of {{ $products->count() }} results</p>
                         </div> --}}
-                        <div class="shop-list_grid">
-                            <div class="list_grid-btns">
-                                <a href="javascript:void(0)" class="list-view"><i class="ion-navicon-round"></i></a>
-                                <a href="javascript:void(0)" class="grid-view on"><i class="ion-grid"></i></a>
+                            <div class="shop-list_grid">
+                                <div class="list_grid-btns">
+                                    <a href="javascript:void(0)" class="list-view"><i class="ion-navicon-round"></i></a>
+                                    <a href="javascript:void(0)" class="grid-view on"><i class="ion-grid"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="row list_grid_container grid">
 
                         @if ($products->count())
@@ -165,8 +175,8 @@
     <!-- End Footer -->
 
     <!-- Home Popup Section -->
-    <div class="modal fade bd-example-modal-lg main-popup" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg main-popup" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body p-0">
@@ -210,16 +220,19 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="product-image">
-                    <img class="product_img" src="https://placehold.co/400x430" data-zoom-image="https://placehold.co/400x430" />
+                    <img class="product_img" src="https://placehold.co/400x430"
+                        data-zoom-image="https://placehold.co/400x430" />
                 </div>
                 <div id="product_gallery" class="product_gallery_item owl-thumbs-slider owl-carousel owl-theme">
                     <div class="item">
-                        <a href="#" class="active" data-image="https://placehold.co/400x430" data-zoom-image="https://placehold.co/400x430">
+                        <a href="#" class="active" data-image="https://placehold.co/400x430"
+                            data-zoom-image="https://placehold.co/400x430">
                             <img src="https://placehold.co/400x430" />
                         </a>
                     </div>
                     <div class="item">
-                        <a href="#" data-image="https://placehold.co/400x430" data-zoom-image="https://placehold.co/400x430">
+                        <a href="#" data-image="https://placehold.co/400x430"
+                            data-zoom-image="https://placehold.co/400x430">
                             <img src="https://placehold.co/400x430" />
                         </a>
                     </div>
@@ -240,12 +253,13 @@
                         <p>Quantity:</p>
                         <div class="input-group">
                             <input type="button" value="-" class="minus" />
-                            <input class="quantity-number qty" type="text" value="1" min="1" max="10" />
+                            <input class="quantity-number qty" type="text" value="1" min="1"
+                                max="10" />
                             <input type="button" value="+" class="plus" />
                         </div>
                         <div class="quickview-cart-btn">
-                            <a href="#" class="btn btn-primary"><img src="{{ asset('assets/new/image/cart-icon-1.png') }}"
-                                    alt="cart-icon-1" />
+                            <a href="#" class="btn btn-primary"><img
+                                    src="{{ asset('assets/new/image/cart-icon-1.png') }}" alt="cart-icon-1" />
                                 Add To Cart</a>
                         </div>
                     </div>
