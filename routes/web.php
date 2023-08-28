@@ -50,16 +50,20 @@ Route::get('/contact', function () {
 });
 
 Route::get('/article', function () {
-    $articles = Article::where('status', 'publish')->get();
+    $tag = request('tag', '');
+    $query = Article::where('status', 'publish');
+    if ($tag !== '') {
+        $query->whereJsonContains('tags', $tag);
+    };
+    $articles = $query->get();
     $recentPosts = Article::where('status', 'publish')->latest()->take(5)->get();
     return view('article', compact('articles', 'recentPosts'));
-});
+})->name('article');
 
 Route::get('/article/{article:slug}', function (Article $article) {
     if ($article->status == 'publish') {
         redirect('/article');
     }
-
     $recentPosts = Article::where('status', 'publish')->latest()->take(5)->get();
     return view('article-detail', compact('article', 'recentPosts'));
 });

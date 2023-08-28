@@ -29,7 +29,8 @@
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet" /> --}}
+    @vite('public/assets/css/style1.css')
 </head>
 
 <body>
@@ -66,7 +67,8 @@
                             </div>
 
                             <div class="post-img">
-                                <img src="{{ asset('uploads/' . $article->cover_image) }}" alt="" class="img-fluid" />
+                                <img src="{{ asset('uploads/' . $article->cover_image) }}" alt=""
+                                    class="img-fluid" />
                             </div>
 
                             <div class="content">
@@ -75,11 +77,12 @@
                                         {!! $content->content !!}
                                     @else
                                         @if ($content->type == 'picture')
-                                            <img src="{{ asset('uploads/' . $content->content) }}" width="100%" class="mb-3 img-fluid"
-                                                alt="">
+                                            <img src="{{ asset('uploads/' . $content->content) }}" width="100%"
+                                                class="mb-3 img-fluid" alt="">
                                         @else
                                             @foreach (json_decode($content->content) as $item)
-                                                <img src="{{ asset('uploads/' . $item) }}" width="100%" class=" mb-3 img-fluid" alt="">
+                                                <img src="{{ asset('uploads/' . $item) }}" width="100%"
+                                                    class=" mb-3 img-fluid" alt="">
                                             @endforeach
                                         @endif
                                     @endif
@@ -106,7 +109,8 @@
                                     <div class="mt-3">
                                         @foreach ($recentPosts as $recent)
                                             <div class="post-item mt-3">
-                                                <img src="{{ asset('uploads/' . $recent->cover_image) }}" alt="" class="flex-shrink-0" />
+                                                <img src="{{ asset('uploads/' . $recent->cover_image) }}"
+                                                    alt="" class="flex-shrink-0" />
                                                 <div>
                                                     <h4>
                                                         <a href="/article/{{ $recent->slug }}"
@@ -127,16 +131,10 @@
                             <div class="sidebar-item tags">
                                 <h3 class="sidebar-title">Tags</h3>
                                 <ul class="mt-3">
-                                    <li><a href="#">App</a></li>
-                                    <li><a href="#">Business</a></li>
-                                    <li><a href="#">Mac</a></li>
-                                    <li><a href="#">Design</a></li>
-                                    <li><a href="#">Office</a></li>
-                                    <li><a href="#">Creative</a></li>
-                                    <li><a href="#">Studio</a></li>
-                                    <li><a href="#">Smart</a></li>
-                                    <li><a href="#">Tips</a></li>
-                                    <li><a href="#">Marketing</a></li>
+                                    @foreach ($article->tags as $tag)
+                                        <li><a href="{{ route('article', ['tag' => $tag]) }}"> {{ $tag }} </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                             <!-- End sidebar tags-->

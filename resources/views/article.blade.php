@@ -29,7 +29,8 @@
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet" /> --}}
+    @vite('public/assets/css/style1.css')
 </head>
 
 <body>
@@ -57,12 +58,13 @@
                     <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
                         <div class="row gy-5 posts-list">
 
-                              @if ($articles->count())
+                               @if ($articles->count())
             @foreach ($articles as $article)
                 <div class="col-md-4 col-sm-6">
                     <article class="d-flex flex-column">
                         <div class="post-img">
-                            <img src="{{ asset('uploads/' . $article->cover_image) }}" alt="" class="img-fluid" />
+                            <img src="{{ asset('uploads/' . $article->cover_image) }}" alt=""
+                                class="img-fluid" />
                         </div>
                         <div class="post-content">
                             <div class="meta-top">
@@ -75,7 +77,8 @@
                             </div>
                             <div class="content">
                                 <h2 class="title">
-                                    <a href="/article/{{ $article->slug }}" title="{{ $article->title }}">{{ $article->title }}</a>
+                                    <a href="/article/{{ $article->slug }}"
+                                        title="{{ $article->title }}">{{ $article->title }}</a>
                                 </h2>
                             </div>
                         </div>
@@ -120,10 +123,12 @@
                         <div class="mt-3">
                             @foreach ($recentPosts as $recent)
                                 <div class="post-item mt-3">
-                                    <img src="{{ asset('uploads/' . $recent->cover_image) }}" alt="" class="flex-shrink-0" />
+                                    <img src="{{ asset('uploads/' . $recent->cover_image) }}" alt=""
+                                        class="flex-shrink-0" />
                                     <div>
                                         <h4>
-                                            <a href="/article/{{ $recent->slug }}" title="{{ $recent->title }}">{{ $recent->title }}</a>
+                                            <a href="/article/{{ $recent->slug }}"
+                                                title="{{ $recent->title }}">{{ $recent->title }}</a>
                                         </h4>
                                         <!-- <p class="time">Jan 1, 2020</p> -->
                                     </div>
