@@ -80,7 +80,21 @@ Route::get('/product/catalogue/{mainPage}', function ($mainPage) {
 })->name('product.catalogue');
 
 Route::get('/product/{product}', function (Product $product) {
-    return view('product-detail', compact('product'));
+    $searchedWord = explode(' ', $product->name);
+    $matchingData = [];
+    foreach ($searchedWord as $word) {
+        $matchingData = array_merge($matchingData, Product::where('name', 'LIKE', '%' . $word . '%')->get()->all());
+    }
+
+    $matchingData = array_unique($matchingData);
+
+    $matchingDataCollection = collect($matchingData);
+
+    $matchingDataCollection->each(function ($product) {
+        $product->load('productImages');
+    });
+
+    return view('product-detail', compact('product', 'matchingDataCollection'));
 })->name('product.detail');
 
 Route::prefix('admin')->group(function () {

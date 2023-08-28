@@ -19,7 +19,11 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet" />
     <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/new/font-awesome/4.7.0/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+    {{-- <link href="{{ asset('assets/new/font-awesome/4.7.0/css/font-awesome.min.css') }}" type="text/css"
+        rel="stylesheet" /> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('assets/new/css/ionicons.min.css') }}" type="text/css" rel="stylesheet" />
     <!-- Owl Css -->
     <link href="{{ asset('assets/new/css/owl.carousel.min.css') }}" type="text/css" rel="stylesheet" />
@@ -62,8 +66,9 @@
                 <div class="col-md-5">
                     <div class="product-image">
                         @if ($product->productImages->count() === 0)
-                            <img src="https://placehold.co/400x300?text=no pict" data-zoom-image="https://placehold.co/400x300?text=no pict"
-                                alt="" class="product_img">
+                            <img src="https://placehold.co/400x300?text=no pict"
+                                data-zoom-image="https://placehold.co/400x300?text=no pict" alt=""
+                                class="product_img">
                         @else
                             <img class="product_img" src="{{ asset('uploads/' . $product->productImages[0]->image) }}"
                                 data-zoom-image="{{ asset('uploads/' . $product->productImages[0]->image) }}" />
@@ -72,7 +77,8 @@
                     <div id="pr_item_gallery" class="product_gallery_item owl-thumbs-slider owl-carousel owl-theme">
                         @foreach ($product->productImages as $key => $image)
                             <div class="item">
-                                <a href="javascript:;" class="{{ $key == 0 ? 'active' : '' }}" data-image="{{ asset('uploads/' . $image->image) }}"
+                                <a href="javascript:;" class="{{ $key == 0 ? 'active' : '' }}"
+                                    data-image="{{ asset('uploads/' . $image->image) }}"
                                     data-zoom-image="{{ asset('uploads/' . $image->image) }}">
                                     <img src="{{ asset('uploads/' . $image->image) }}" />
                                 </a>
@@ -99,13 +105,23 @@
                             <p>Quantity:</p>
                             <div class="input-group">
                                 <input type="button" value="-" class="minus" />
-                                <input class="quantity-number qty" type="text" value="1" min="1" max="10" />
+                                <input class="quantity-number qty" type="text" value="1" min="1"
+                                    max="10" />
                                 <input type="button" value="+" class="plus" />
                             </div>
-                            <div class="quickview-cart-btn">
-                                <a href="#" class="btn btn-primary"><img src="{{ asset('assets/new/image/cart-icon-1.png') }}"
-                                        alt="cart-icon-1" />
-                                    Add To Cart</a>
+                            <div class="quickview-cart-btn" style="display:flex; align-items:center">
+
+                                <a href="#"
+                                    style="background-color: #269d26;border-radius: 6px;padding: 5px;"><img
+                                        src="{{ asset('assets/img/tokopedia.png') }}" width="32"
+                                        alt="tokopedia-icon" /></a>
+                                <a href="#" style="padding:0; margin:0"><img
+                                        src="{{ asset('assets/img/shopee.png') }}" width="50"
+                                        alt="shopee-icon" /></a>
+                                <a href="#" class="btn btn-primary"
+                                    style="background-color:#16c931; border-color:#16c931; display: flex; align-items: center; width:max-content; height:max-content; padding: 4px 8px">
+                                    <i class="fa-brands fa-whatsapp" style="color: #ffffff; font-size:2rem"></i>
+                                    <span style="margin-left: 0.5rem">Buy Now</span></a>
                             </div>
                         </div>
                     </div>
@@ -123,8 +139,9 @@
                     <div class="products-tabs">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="discription-tab" data-bs-toggle="tab" href="#discription" role="tab"
-                                    aria-controls="discription" aria-selected="true">Discription</a>
+                                <a class="nav-link active" id="discription-tab" data-bs-toggle="tab"
+                                    href="#discription" role="tab" aria-controls="discription"
+                                    aria-selected="true">Discription</a>
                             </li>
                             <!-- <li class="nav-item">
                   <a
@@ -140,7 +157,8 @@
                 </li> -->
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade tab-1 show active" id="discription" role="tabpanel" aria-labelledby="discription-tab">
+                            <div class="tab-pane fade tab-1 show active" id="discription" role="tabpanel"
+                                aria-labelledby="discription-tab">
                                 <div class="tab-title">
                                     <h6>Discription</h6>
                                 </div>
@@ -148,7 +166,8 @@
                                     {!! $product->description !!}
                                 </div>
                             </div>
-                            <div class="tab-pane fade tab-2" id="ai" role="tabpanel" aria-labelledby="ai-tab">
+                            <div class="tab-pane fade tab-2" id="ai" role="tabpanel"
+                                aria-labelledby="ai-tab">
                                 <div class="tab-title">
                                     <h6>Additional information</h6>
                                 </div>
@@ -202,22 +221,37 @@
             <div class="row">
                 <div class="col-12">
                     <div class="products-slider4 same-nav owl-carousel owl-theme" data-margin="30" data-dots="false">
-                        <div class="item">
-                            <div class="product-box common-cart-box">
-                                <div class="product-img common-cart-img">
-                                    <img src="https://placehold.co/400x430" alt="product-img" />
-                                    <div class="hover-option">
-                                        <div class="add-cart-btn">
-                                            <a href="#" class="btn btn-primary">Add To Cart</a>
+                        @foreach ($matchingDataCollection as $related)
+                            @if ($related->id !== $product->id)
+                                <div class="item">
+                                    <div class="product-box common-cart-box">
+                                        <div class="product-img common-cart-img">
+                                            <img src="{{ asset('uploads/' . $related->productImages[0]->image) }}"
+                                                alt="product-img" />
+                                            <div class="hover-option">
+                                                <div class="add-cart-btn">
+                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-info common-cart-info text-center">
+                                            <a href="{{ route('product.detail', $related->slug) }}"
+                                                class="cart-name">
+                                                {{ $related->name }} </a>
+                                            <p class="cart-price">
+                                                @if ($related->discount > 0)
+                                                    <del>Rp. {{ number_format($related->price, 0, ',', '.') }}</del>Rp.
+                                                    {{ number_format($related->price - ($related->price * $related->discount) / 100, 0, ',', '.') }}
+                                                @else
+                                                    Rp. {{ number_format($related->price, 0, ',', '.') }}
+                                                @endif
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product-info common-cart-info text-center">
-                                    <a href="javascript:;" class="cart-name">Variable product 001</a>
-                                    <p class="cart-price"><del>Rp 900.000</del>Rp 780.000</p>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endforeach
+
                     </div>
                 </div>
             </div>
@@ -230,8 +264,8 @@
     <!-- End Footer -->
 
     <!-- Home Popup Section -->
-    <div class="modal fade bd-example-modal-lg main-popup" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg main-popup" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body p-0">
@@ -275,16 +309,19 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="product-image">
-                    <img class="product_img" src="https://placehold.co/400x430" data-zoom-image="https://placehold.co/400x430" />
+                    <img class="product_img" src="https://placehold.co/400x430"
+                        data-zoom-image="https://placehold.co/400x430" />
                 </div>
                 <div id="product_gallery" class="product_gallery_item owl-thumbs-slider owl-carousel owl-theme">
                     <div class="item">
-                        <a href="#" class="active" data-image="https://placehold.co/400x430" data-zoom-image="https://placehold.co/400x430">
+                        <a href="#" class="active" data-image="https://placehold.co/400x430"
+                            data-zoom-image="https://placehold.co/400x430">
                             <img src="https://placehold.co/400x430" />
                         </a>
                     </div>
                     <div class="item">
-                        <a href="#" data-image="https://placehold.co/400x430" data-zoom-image="https://placehold.co/400x430">
+                        <a href="#" data-image="https://placehold.co/400x430"
+                            data-zoom-image="https://placehold.co/400x430">
                             <img src="https://placehold.co/400x430" />
                         </a>
                     </div>
@@ -305,12 +342,13 @@
                         <p>Quantity:</p>
                         <div class="input-group">
                             <input type="button" value="-" class="minus" />
-                            <input class="quantity-number qty" type="text" value="1" min="1" max="10" />
+                            <input class="quantity-number qty" type="text" value="1" min="1"
+                                max="10" />
                             <input type="button" value="+" class="plus" />
                         </div>
                         <div class="quickview-cart-btn">
-                            <a href="#" class="btn btn-primary"><img src="{{ asset('assets/new/image/cart-icon-1.png') }}"
-                                    alt="cart-icon-1" />
+                            <a href="#" class="btn btn-primary"><img
+                                    src="{{ asset('assets/new/image/cart-icon-1.png') }}" alt="cart-icon-1" />
                                 Add To Cart</a>
                         </div>
                     </div>
