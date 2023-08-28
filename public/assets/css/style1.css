@@ -2004,7 +2004,12 @@ h6 {
 
 @media (max-width: 639px) {
     .product-category-carousel-item img {
-        max-width: 70%;
+        /* max-width: 70%; */
+        max-width: 40%;
+        height: 100%;
+    }
+    .product-category {
+        height: 25vh;
     }
 }
 
@@ -2130,8 +2135,11 @@ h6 {
 
 @media (max-width: 639px) {
     .review-carousel-item img {
-        max-width: 100%;
-        height: auto;
+        max-width: auto;
+        height: 100%;
+    }
+    .review {
+        height: 30vh;
     }
 }
 
@@ -2142,4 +2150,7 @@ h6 {
 .product-bg {
     background-image: url("../img/shop.jpg");
     background-size: 100% 100%;
+}
+.portofolio-bg {
+    background-image: url("../img/talk.jpg");
 }

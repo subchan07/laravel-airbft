@@ -39,10 +39,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center"
-            style="
-          background-image: url('https://www.airbft.com/wp-content/themes/songjiang/images/s1.jpg');
-        ">
+        <div class="breadcrumbs d-flex align-items-center portofolio-bg">
         </div>
         <!-- End Breadcrumbs -->
 
@@ -53,7 +50,7 @@
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150">
 
                     @foreach ($portfolio as $p)
-                        <div class="col-lg-4 col-md-6 portfolio-item">
+                        <div class="col-lg-4 col-md-6 mb-3 portfolio-item">
                             <img src="{{ asset('uploads/' . $p->content->image) }}" class="img-fluid" alt="">
                             <div class="portfolio-info">
                                 <a href="{{ asset('uploads/' . $p->content->image) }}" data-gallery="portfolioGallery"
