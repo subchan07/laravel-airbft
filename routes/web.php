@@ -14,6 +14,7 @@ use App\Models\HomePage;
 use App\Models\MainPage;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,9 @@ Route::get('/', function () {
     $header = MainPage::getAllDataCustom('header');
     $categoryProducts = CategoryProduct::all();
     $homes = MainPage::getAllDataCustom('!header');
+    $telp = Mainpage::where('category', 'call-us-now')->first()->content->no_telp;
 
-    return view('index2', compact('homes', 'header', 'categoryProducts'));
+    return view('index2', compact('homes', 'header', 'categoryProducts', 'telp'));
 })->name('index');
 
 Route::get('/portfolio', function () {

@@ -2235,3 +2235,22 @@ h6 {
     align-items: center;
     justify-content: center;
 }
+/* -------------------------------------------------------------------------- */
+/*                                     Map                                    */
+/* -------------------------------------------------------------------------- */
+
+.map-container {
+    width: 50%;
+    min-height: 500px;
+    float: left;
+}
+
+.half-width-image {
+    display: block;
+    width: 50%;
+    min-height: 500px;
+    float: right;
+    object-fit: cover;
+    object-position: right;
+    /* clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); */
+}
