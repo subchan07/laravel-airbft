@@ -55,7 +55,7 @@
     @include('partials.landing-page.navbar')
     <!-- End Header -->
 
-    <section class="breadcrumbs d-flex align-items-center product-bg">
+    <section class="breadcrumbs d-flex align-items-center product-bg banner">
     </section>
     <!-- End Header Section -->
 
@@ -88,7 +88,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="quickview-product-detail">
-                        <h2 class="box-title">{{ $product->name }}</h2>
+                        <h2 class="box-title" id="product-title">{{ $product->name }}</h2>
                         <h3 class="box-price">
                             @if ($product->discount != 0)
                                 <del>{{ format_rupiah($product->price, true) }}</del>
@@ -111,14 +111,15 @@
                             </div>
                             <div class="quickview-cart-btn" style="display:flex; align-items:center">
 
-                                <a href="#"
+                                <a href="{{ $product->tokopedia_link }}" target="_blank"
                                     style="background-color: #269d26;border-radius: 6px;padding: 5px;"><img
                                         src="{{ asset('assets/img/tokopedia.png') }}" width="32"
                                         alt="tokopedia-icon" /></a>
-                                <a href="#" style="padding:0; margin:0"><img
-                                        src="{{ asset('assets/img/shopee.png') }}" width="50"
+                                <a href="{{ $product->shopee_link }}" style="padding:0; margin:0"
+                                    target="_blank"><img src="{{ asset('assets/img/shopee.png') }}" width="50"
                                         alt="shopee-icon" /></a>
-                                <a href="#" class="btn btn-primary"
+                                <a href="#" class="btn btn-primary" id="whatsapp-btn"
+                                    telp="{{ $telp }}"
                                     style="background-color:#16c931; border-color:#16c931; display: flex; align-items: center; width:max-content; height:max-content; padding: 4px 8px">
                                     <i class="fa-brands fa-whatsapp" style="color: #ffffff; font-size:2rem"></i>
                                     <span style="margin-left: 0.5rem">Buy Now</span></a>
@@ -221,7 +222,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="products-slider4 same-nav owl-carousel owl-theme" data-margin="30" data-dots="false">
-                        @foreach ($matchingDataCollection as $related)
+                        @foreach ($relatedProduct as $related)
                             @if ($related->id !== $product->id)
                                 <div class="item">
                                     <div class="product-box common-cart-box">
@@ -234,7 +235,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="product-info common-cart-info text-center">
+                                        <div class="text-center product-info common-cart-info">
                                             <a href="{{ route('product.detail', $related->slug) }}"
                                                 class="cart-name">
                                                 {{ $related->name }} </a>
@@ -268,12 +269,12 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body p-0">
+                <div class="p-0 modal-body">
                     <div class="newsletter-pop-up d-flex">
                         <div class="popup-img">
                             <img src="https://placehold.co/340x442" alt="popup-img" />
                         </div>
-                        <div class="popup-form text-center">
+                        <div class="text-center popup-form">
                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="ion-close-round"></i></span>
                             </button>
@@ -391,6 +392,22 @@
     <!-- Custom css -->
     <script src="{{ asset('assets/new/js/custom.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+        document.getElementById('whatsapp-btn').addEventListener('click', function() {
+            const productName = document.getElementById('product-title').innerText;
+
+            let message = encodeURIComponent(
+                `Hai Airbft Indonesia Saya ingin membeli item “${productName}”\n\n${window.location.href}\n\nMohon di bantu.`
+            )
+
+            const phone = this.getAttribute('telp');
+
+            let whatsappLink = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+
+            window.open(whatsappLink, '_blank');
+
+        })
+    </script>
 </body>
 
 </html>
