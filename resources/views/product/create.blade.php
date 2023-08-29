@@ -11,7 +11,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="mb-2 row">
                     <div class="col-sm-6">
                         <h1>New Product</h1>
                     </div>
@@ -75,6 +75,16 @@
                                     <textarea name="excerpt" id="excerpt" rows="2" class="form-control" onkeydown="NoNewLine(event)" required></textarea>
                                 </div>
                                 <div class="form-group">
+                                    <label for="shopee_link">Shopee</label>
+                                    <input type="url" name="shopee_link" id="shopee_link" class="form-control"
+                                        placeholder="https://shopee.co.id/....">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tokopedia_link">Tokopedia</label>
+                                    <input type="url" name="tokopedia_link" id="tokopedia_link" class="form-control"
+                                        placeholder="https://www.tokopedia.com/...">
+                                </div>
+                                <div class="form-group">
                                     <label for="description">Description</label>
                                     <textarea name="description" id="description" required>
                                         Place some <u>text</u> <b>here</b>
@@ -84,7 +94,7 @@
                                     <div class="col-12">
                                         <a href="{{ route('product.index') }}" class="btn btn-secondary"><i
                                                 class="fas fa-chevron-left"></i> Back</a>
-                                        <button type="submit" class="btn btn-success float-right">Create</button>
+                                        <button type="submit" class="float-right btn btn-success">Create</button>
                                     </div>
                                 </div>
                             </form>
