@@ -96,21 +96,12 @@ Route::get('/product/catalogue/{mainPage}', function ($mainPage) {
 })->name('product.catalogue');
 
 Route::get('/product/{product}', function (Product $product) {
-    $searchedWord = explode(' ', $product->name);
-    $matchingData = [];
-    foreach ($searchedWord as $word) {
-        $matchingData = array_merge($matchingData, Product::where('name', 'LIKE', '%' . $word . '%')->get()->all());
-    }
-
-    $matchingData = array_unique($matchingData);
-
-    $matchingDataCollection = collect($matchingData);
-
-    $matchingDataCollection->each(function ($product) {
-        $product->load('productImages');
-    });
-
-    return view('product-detail', compact('product', 'matchingDataCollection'));
+    // matchind data for related product section
+    $relatedProduct = $product->category->product()->get()->where('id', '<>', $product->id);
+    // admin no telp
+    $callUsNow = MainPage::where('category', 'call-us-now')->first();
+    $telp = $callUsNow->content->no_telp;
+    return view('product-detail', compact('product', 'relatedProduct', 'telp'));
 })->name('product.detail');
 
 Route::prefix('admin')->group(function () {

@@ -40,7 +40,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center news-bg">
+        <div class="breadcrumbs d-flex align-items-center news-bg banner">
         </div>
         <!-- End Breadcrumbs -->
 
@@ -82,7 +82,7 @@
                                         @else
                                             @foreach (json_decode($content->content) as $item)
                                                 <img src="{{ asset('uploads/' . $item) }}" width="100%"
-                                                    class=" mb-3 img-fluid" alt="">
+                                                    class="mb-3 img-fluid" alt="">
                                             @endforeach
                                         @endif
                                     @endif
@@ -108,7 +108,7 @@
 
                                     <div class="mt-3">
                                         @foreach ($recentPosts as $recent)
-                                            <div class="post-item mt-3">
+                                            <div class="mt-3 post-item">
                                                 <img src="{{ asset('uploads/' . $recent->cover_image) }}"
                                                     alt="" class="flex-shrink-0" />
                                                 <div>

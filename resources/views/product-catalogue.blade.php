@@ -39,7 +39,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center product-bg">
+        <div class="breadcrumbs d-flex align-items-center product-bg banner">
 
         </div>
         <!-- End Breadcrumbs -->
@@ -49,7 +49,8 @@
             <div class="container" data-aos="fade-up">
                 <div class="row g-5 justify-content-center">
                     <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
-                        <embed src="{{ asset('uploads/' . $productCatalog->content->pdf) }}" type="application/pdf" width="100%" height="1100" />
+                        <embed src="{{ asset('uploads/' . $productCatalog->content->pdf) }}" type="application/pdf"
+                            width="100%" height="1100" />
                     </div>
 
                 </div>

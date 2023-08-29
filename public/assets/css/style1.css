@@ -2153,8 +2153,35 @@ h6 {
 
 .product-bg {
     background-image: url("../img/shop.jpg");
-    background-size: 100% 100%;
 }
+
 .portofolio-bg {
     background-image: url("../img/talk.jpg");
+}
+
+.banner {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 50px;
+    padding: 0;
+    transition: min-height 100ms ease-in-out;
+}
+
+@media (min-width: 640px) {
+    .banner {
+        min-height: 100px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .banner {
+        min-height: 150px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .banner {
+        min-height: 200px;
+    }
 }

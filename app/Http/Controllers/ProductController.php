@@ -81,7 +81,9 @@ class ProductController extends Controller
             'stock' => 'required|min:0',
             'discount' => 'required|min:0',
             'excerpt' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'shopee_link' => 'url:shopee',
+            'tokopedia_link' => 'url:tokopedia'
         ]);
 
         $slug = SlugService::createSlug(Product::class, 'slug', $request->name);

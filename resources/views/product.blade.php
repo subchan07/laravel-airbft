@@ -40,7 +40,8 @@
     <!-- main css -->
     <link href="{{ asset('assets/new/css/style.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('assets/new/css/responsive.css') }}" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}" /> --}}
+    @vite('public/assets/css/style1.css')
     <title>“AirRide”Smart lowered airsuspension brand_AIRBFTsuspension</title>
 
 </head>
@@ -50,7 +51,7 @@
     @include('partials.landing-page.navbar')
     <!-- End Header -->
 
-    <section class="breadcrumbs d-flex align-items-center product-bg">
+    <section class="breadcrumbs d-flex align-items-center product-bg banner">
     </section>
     <!-- End Header Section -->
 
@@ -88,7 +89,7 @@
                             </div>
                         </div>
                     </form>
-                    <div class="row list_grid_container grid">
+                    <div class="grid row list_grid_container">
 
                         @if ($products->count())
                             @foreach ($products as $key => $product)
@@ -100,7 +101,7 @@
                                             <div class="hover-option">
                                             </div>
                                         </div>
-                                        <div class="product-info common-cart-info text-center">
+                                        <div class="text-center product-info common-cart-info">
                                             <a href="{{ route('product.detail', ['product' => $product->slug]) }}"
                                                 class="cart-name">{{ $product->name }}</a>
                                             <p class="cart-price">
@@ -179,12 +180,12 @@
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-body p-0">
+                <div class="p-0 modal-body">
                     <div class="newsletter-pop-up d-flex">
                         <div class="popup-img">
                             <img src="https://placehold.co/340x442" alt="popup-img" />
                         </div>
-                        <div class="popup-form text-center">
+                        <div class="text-center popup-form">
                             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true"><i class="ion-close-round"></i></span>
                             </button>
