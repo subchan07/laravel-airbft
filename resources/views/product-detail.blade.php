@@ -43,7 +43,8 @@
     <!-- main css -->
     <link href="{{ asset('assets/new/css/style.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('assets/new/css/responsive.css') }}" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}" /> --}}
+    @vite('public/assets/css/style1.css')
     <title>“AirRide”Smart lowered airsuspension brand_AIRBFTsuspension</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -111,17 +112,13 @@
                             </div>
                             <div class="quickview-cart-btn" style="display:flex; align-items:center">
 
-                                <a href="{{ $product->tokopedia_link }}" target="_blank"
-                                    style="background-color: #269d26;border-radius: 6px;padding: 5px;"><img
-                                        src="{{ asset('assets/img/tokopedia.png') }}" width="32"
-                                        alt="tokopedia-icon" /></a>
-                                <a href="{{ $product->shopee_link }}" style="padding:0; margin:0"
-                                    target="_blank"><img src="{{ asset('assets/img/shopee.png') }}" width="50"
-                                        alt="shopee-icon" /></a>
-                                <a href="#" class="btn btn-primary" id="whatsapp-btn"
-                                    telp="{{ $telp }}"
-                                    style="background-color:#16c931; border-color:#16c931; display: flex; align-items: center; width:max-content; height:max-content; padding: 4px 8px">
-                                    <i class="fa-brands fa-whatsapp" style="color: #ffffff; font-size:2rem"></i>
+                                <a href="{{ $product->tokopedia_link }}" class="shop-btn" target="_blank"><img
+                                        src="{{ asset('assets/img/tokopedia.png') }}" alt="tokopedia-icon" /></a>
+                                <a href="{{ $product->shopee_link }}" target="_blank" class="shop-btn"><img
+                                        src="{{ asset('assets/img/shopee.png') }}" alt="shopee-icon" /></a>
+                                <a href="#" onclick="sendMessagae(this)" class="shop-btn whatsapp-btn" id="whatsapp-btn"
+                                    telp="{{ $telp }}" product="{{ $product->name }}">
+                                    <i class="fa-brands fa-whatsapp" style="color: #ffffff; font-size: 34px"></i>
                                     <span style="margin-left: 0.5rem">Buy Now</span></a>
                             </div>
                         </div>
@@ -230,8 +227,20 @@
                                             <img src="{{ asset('uploads/' . $related->productImages[0]->image) }}"
                                                 alt="product-img" />
                                             <div class="hover-option">
-                                                <div class="add-cart-btn">
-                                                    <a href="#" class="btn btn-primary">Add To Cart</a>
+                                                <div class="related-btns">
+                                                    <a href="{{ $related->tokopedia_link }}" class="shop-btn"
+                                                        target="_blank"><img
+                                                            src="{{ asset('assets/img/tokopedia.png') }}"
+                                                            alt="tokopedia-icon" /></a>
+                                                    <a href="{{ $related->shopee_link }}" target="_blank"
+                                                        class="shop-btn"><img
+                                                            src="{{ asset('assets/img/shopee.png') }}"
+                                                            alt="shopee-icon" /></a>
+                                                    <a href="#" onclick="sendMessage(this)" class="shop-btn whatsapp-btn" id="whatsapp-btn"
+                                                        telp="{{ $telp }}" product="{{ $related->name }}">
+                                                        <i class="fa-brands fa-whatsapp"
+                                                            style="color: #ffffff; font-size: 34px"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -393,20 +402,33 @@
     <script src="{{ asset('assets/new/js/custom.js') }}" type="text/javascript"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script>
-        document.getElementById('whatsapp-btn').addEventListener('click', function() {
-            const productName = document.getElementById('product-title').innerText;
+        function sendMessage(el) {
+            const productName = el.getAttribute('product');
 
             let message = encodeURIComponent(
                 `Hai Airbft Indonesia Saya ingin membeli item “${productName}”\n\n${window.location.href}\n\nMohon di bantu.`
             )
 
-            const phone = this.getAttribute('telp');
+            const phone = el.getAttribute('telp');
 
             let whatsappLink = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
 
             window.open(whatsappLink, '_blank');
+        }
+        // document.getElementById('whatsapp-btn').addEventListener('click', function() {
+        //     const productName = document.getElementById('product-title').innerText;
 
-        })
+        //     let message = encodeURIComponent(
+        //         `Hai Airbft Indonesia Saya ingin membeli item “${productName}”\n\n${window.location.href}\n\nMohon di bantu.`
+        //     )
+
+        //     const phone = this.getAttribute('telp');
+
+        //     let whatsappLink = `https://api.whatsapp.com/send?phone=${phone}&text=${message}`;
+
+        //     window.open(whatsappLink, '_blank');
+
+        // })
     </script>
 </body>
 
