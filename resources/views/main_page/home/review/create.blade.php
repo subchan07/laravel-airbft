@@ -6,7 +6,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="mb-2 row">
                     <div class="col-sm-6">
                         <h1>{{ $title }}</h1>
                     </div>
@@ -55,11 +55,35 @@
                                         required>
                                     <small class="text-danger error-image3"></small>
                                 </div>
+                                <div class="form-group">
+                                    <label for="upload_image">Upload Image</label>
+                                    <img class="mb-2 col-sm-3" id="previewImgDesktop4">
+                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
+                                        onchange="previewImage(this,'#previewImgDesktop4','#formNew', '.error-image4')"
+                                        required>
+                                    <small class="text-danger error-image4"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="upload_image">Upload Image</label>
+                                    <img class="mb-2 col-sm-3" id="previewImgDesktop5">
+                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
+                                        onchange="previewImage(this,'#previewImgDesktop5','#formNew', '.error-image5')"
+                                        required>
+                                    <small class="text-danger error-image5"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="upload_image">Upload Image</label>
+                                    <img class="mb-2 col-sm-3" id="previewImgDesktop6">
+                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
+                                        onchange="previewImage(this,'#previewImgDesktop6','#formNew', '.error-image6')"
+                                        required>
+                                    <small class="text-danger error-image6"></small>
+                                </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <a href="{{ route('main_page', ['mainPage' => 'home']) }}" id="btnBackForm"
                                             class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Back</a>
-                                        <button type="submit" class="btn btn-success float-right">Create</button>
+                                        <button type="submit" class="float-right btn btn-success">Create</button>
                                     </div>
                                 </div>
                             </form>
@@ -76,7 +100,7 @@
     <div class="modal fade" id="modal-image-preview">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-body p-0">
+                <div class="p-0 modal-body">
                 </div>
             </div>
             <!-- /.modal-content -->

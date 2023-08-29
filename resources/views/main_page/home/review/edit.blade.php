@@ -6,7 +6,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
+                <div class="mb-2 row">
                     <div class="col-sm-6">
                         <h1>{{ $title }}</h1>
                     </div>
@@ -32,10 +32,16 @@
                                 $image0 = '';
                                 $image1 = '';
                                 $image2 = '';
-                                if ($mainPage->content != null ) {
+                                $image3 = '';
+                                $image4 = '';
+                                $image5 = '';
+                                if ($mainPage->content != null) {
                                     $image0 = $mainPage->content[0]->image ?? null;
                                     $image1 = $mainPage->content[1]->image ?? null;
                                     $image2 = $mainPage->content[2]->image ?? null;
+                                    $image3 = $mainPage->content[3]->image ?? null;
+                                    $image4 = $mainPage->content[4]->image ?? null;
+                                    $image5 = $mainPage->content[5]->image ?? null;
                                 }
                             @endphp
 
@@ -45,10 +51,13 @@
                                 <input type="hidden" name="oldFiles[]" value="{{ $image0 }}">
                                 <input type="hidden" name="oldFiles[]" value="{{ $image1 }}">
                                 <input type="hidden" name="oldFiles[]" value="{{ $image2 }}">
+                                <input type="hidden" name="oldFiles[]" value="{{ $image3 }}">
+                                <input type="hidden" name="oldFiles[]" value="{{ $image4 }}">
+                                <input type="hidden" name="oldFiles[]" value="{{ $image5 }}">
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
                                     @if ($image0 != '')
-                                        <button type="button" class="badge badge-dark modalImagePreview float-right"
+                                        <button type="button" class="float-right badge badge-dark modalImagePreview"
                                             data-toggle="modal" data-target="#modal-image-preview"
                                             data-altimg="{{ $mainPage->category }}"
                                             data-srcimg="{{ asset('uploads/' . $image0) }}">Old
@@ -62,7 +71,7 @@
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
                                     @if ($image1 != '')
-                                        <button type="button" class="badge badge-dark modalImagePreview float-right"
+                                        <button type="button" class="float-right badge badge-dark modalImagePreview"
                                             data-toggle="modal" data-target="#modal-image-preview"
                                             data-altimg="{{ $mainPage->category }}"
                                             data-srcimg="{{ asset('uploads/' . $image1) }}">Old
@@ -76,7 +85,7 @@
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
                                     @if ($image2 != '')
-                                        <button type="button" class="badge badge-dark modalImagePreview float-right"
+                                        <button type="button" class="float-right badge badge-dark modalImagePreview"
                                             data-toggle="modal" data-target="#modal-image-preview"
                                             data-altimg="{{ $mainPage->category }}"
                                             data-srcimg="{{ asset('uploads/' . $image2) }}">Old
@@ -87,11 +96,53 @@
                                         onchange="previewImage(this,'#previewImgDesktop3','#formNew', '.error-image3')">
                                     <small class="text-danger error-image3"></small>
                                 </div>
+                                <div class="form-group">
+                                    <label for="upload_image">Upload Image</label>
+                                    @if ($image3 != '')
+                                        <button type="button" class="float-right badge badge-dark modalImagePreview"
+                                            data-toggle="modal" data-target="#modal-image-preview"
+                                            data-altimg="{{ $mainPage->category }}"
+                                            data-srcimg="{{ asset('uploads/' . $image3) }}">Old
+                                            image</button>
+                                    @endif
+                                    <img class="mb-2 col-sm-3" id="previewImgDesktop4">
+                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
+                                        onchange="previewImage(this,'#previewImgDesktop4','#formNew', '.error-image4')">
+                                    <small class="text-danger error-image4"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="upload_image">Upload Image</label>
+                                    @if ($image4 != '')
+                                        <button type="button" class="float-right badge badge-dark modalImagePreview"
+                                            data-toggle="modal" data-target="#modal-image-preview"
+                                            data-altimg="{{ $mainPage->category }}"
+                                            data-srcimg="{{ asset('uploads/' . $image4) }}">Old
+                                            image</button>
+                                    @endif
+                                    <img class="mb-2 col-sm-3" id="previewImgDesktop5">
+                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
+                                        onchange="previewImage(this,'#previewImgDesktop5','#formNew', '.error-image5')">
+                                    <small class="text-danger error-image5"></small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="upload_image">Upload Image</label>
+                                    @if ($image5 != '')
+                                        <button type="button" class="float-right badge badge-dark modalImagePreview"
+                                            data-toggle="modal" data-target="#modal-image-preview"
+                                            data-altimg="{{ $mainPage->category }}"
+                                            data-srcimg="{{ asset('uploads/' . $image5) }}">Old
+                                            image</button>
+                                    @endif
+                                    <img class="mb-2 col-sm-3" id="previewImgDesktop6">
+                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
+                                        onchange="previewImage(this,'#previewImgDesktop6','#formNew', '.error-image6')">
+                                    <small class="text-danger error-image6"></small>
+                                </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <a href="{{ route('main_page', ['mainPage' => 'home']) }}" id="btnBackForm"
                                             class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Back</a>
-                                        <button type="submit" class="btn btn-success float-right">Edit</button>
+                                        <button type="submit" class="float-right btn btn-success">Edit</button>
                                     </div>
                                 </div>
                             </form>
@@ -108,7 +159,7 @@
     <div class="modal fade" id="modal-image-preview">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-body p-0">
+                <div class="p-0 modal-body">
                 </div>
             </div>
             <!-- /.modal-content -->
