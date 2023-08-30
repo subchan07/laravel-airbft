@@ -56,8 +56,8 @@
     @include('partials.landing-page.navbar')
     <!-- End Header -->
 
-    <section class="breadcrumbs d-flex align-items-center product-bg banner">
-    </section>
+    <div class="banner shop">
+    </div>
     <!-- End Header Section -->
 
     <!-- Start Product Detail Section -->
@@ -116,8 +116,8 @@
                                         src="{{ asset('assets/img/tokopedia.png') }}" alt="tokopedia-icon" /></a>
                                 <a href="{{ $product->shopee_link }}" target="_blank" class="shop-btn"><img
                                         src="{{ asset('assets/img/shopee.png') }}" alt="shopee-icon" /></a>
-                                <a href="#" onclick="sendMessagae(this)" class="shop-btn whatsapp-btn" id="whatsapp-btn"
-                                    telp="{{ $telp }}" product="{{ $product->name }}">
+                                <a href="#" onclick="sendMessagae(this)" class="shop-btn whatsapp-btn"
+                                    id="whatsapp-btn" telp="{{ $telp }}" product="{{ $product->name }}">
                                     <i class="fa-brands fa-whatsapp" style="color: #ffffff; font-size: 34px"></i>
                                     <span style="margin-left: 0.5rem">Buy Now</span></a>
                             </div>
@@ -236,7 +236,8 @@
                                                         class="shop-btn"><img
                                                             src="{{ asset('assets/img/shopee.png') }}"
                                                             alt="shopee-icon" /></a>
-                                                    <a href="#" onclick="sendMessage(this)" class="shop-btn whatsapp-btn" id="whatsapp-btn"
+                                                    <a href="#" onclick="sendMessage(this)"
+                                                        class="shop-btn whatsapp-btn" id="whatsapp-btn"
                                                         telp="{{ $telp }}" product="{{ $related->name }}">
                                                         <i class="fa-brands fa-whatsapp"
                                                             style="color: #ffffff; font-size: 34px"></i>

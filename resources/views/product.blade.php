@@ -51,8 +51,8 @@
     @include('partials.landing-page.navbar')
     <!-- End Header -->
 
-    <section class="breadcrumbs d-flex align-items-center product-bg banner">
-    </section>
+    <div class="banner shop">
+    </div>
     <!-- End Header Section -->
 
     <!-- Start Shop Section -->

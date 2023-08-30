@@ -32,7 +32,7 @@ Route::get('/', function () {
     $categoryProducts = CategoryProduct::all();
     $homes = MainPage::getAllDataCustom('!header');
     $telp = Mainpage::where('category', 'call-us-now')->first()->content->no_telp;
-
+    // return $homes;
     return view('index2', compact('homes', 'header', 'categoryProducts', 'telp'));
 })->name('index');
 
