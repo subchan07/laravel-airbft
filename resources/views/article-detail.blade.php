@@ -40,7 +40,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center news-bg banner">
+        <div class="banner news">
         </div>
         <!-- End Breadcrumbs -->
 
@@ -132,7 +132,8 @@
                                 <h3 class="sidebar-title">Tags</h3>
                                 <ul class="mt-3">
                                     @foreach ($article->tags as $tag)
-                                        <li><a href="{{ route('article', ['tag' => $tag]) }}"> {{ $tag }} </a>
+                                        <li><a href="{{ route('article', ['tag' => $tag]) }}"> {{ $tag }}
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>

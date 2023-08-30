@@ -39,8 +39,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center product-bg banner">
-
+        <div class="banner shop">
         </div>
         <!-- End Breadcrumbs -->
 

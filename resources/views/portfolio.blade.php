@@ -29,7 +29,8 @@
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('assets/css/style1.css') }}" rel="stylesheet" /> --}}
+    @vite('public/assets/css/style1.css')
 </head>
 
 <body>
@@ -39,7 +40,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center portofolio-bg banner">
+        <div class="banner talk">
         </div>
         <!-- End Breadcrumbs -->
 

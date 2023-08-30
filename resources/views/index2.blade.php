@@ -124,17 +124,6 @@
                         </div>
                     </section>
                 @endif
-                @if ($home->content != null && $home->category == 'call-us-now' && $home->content->image != null)
-                    <section class="position-relative button-bottom-right">
-                        <section id="map" class="map-container"></section>
-                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}"
-                            class="half-width-image" alt="Call Us Now" />
-                        <div class="button-bottom-right-item">
-                            <a href="https://api.whatsapp.com/send?phone={{ $home->content->no_telp }}&text={{ $home->content->text == null ? '' : $home->content->text }}"
-                                target="_blank" class="button-action">CALL US NOW</a>
-                        </div>
-                    </section>
-                @endif
                 @if ($home->content != null && $home->category == 'review')
                     <section class="review">
                         <div class="background-container"></div>
@@ -171,6 +160,27 @@
                         </a>
                     </section>
                 @endif
+            @endif
+        @endforeach
+        @foreach ($homes as $key => $home)
+            @if ($key > 0)
+                @if ($home->content != null && $home->category == 'call-us-now' && $home->content->image != null)
+                    <section class="position-relative button-bottom-right with-map-section">
+                        <section id="map" class="map-container"></section>
+                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}"
+                            class="custom-width" alt="Call Us Now" />
+                        {{-- <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width"
+                            alt="Call Us Now" /> --}}
+                        <div class="button-bottom-right-item">
+                            <a href="https://api.whatsapp.com/send?phone={{ $home->content->no_telp }}&text={{ $home->content->text == null ? '' : $home->content->text }}"
+                                target="_blank" class="button-action">CALL US NOW</a>
+                        </div>
+                    </section>
+                @endif
+            @endif
+        @endforeach
+        @foreach ($homes as $key => $home)
+            @if ($key > 0)
                 @if ($home->content != null && $home->category == 'image' && $home->content->image != null)
                     <section class="position-relative">
                         <div>
@@ -202,10 +212,15 @@
     <script>
         let map = L.map('map').setView([0.8794249737278803, 109.08272924234072], 5);
 
-        L.tileLayer(
-            'https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=7a69abaa00584a99a5c856ddfad442c5', {
-                attribution: '&copy; <a href="https://www.thunderforest.com/maps/landscape/">Thunderforest</a> contributors'
-            }).addTo(map);
+        // L.tileLayer(
+        //     'https://{s}.tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=7a69abaa00584a99a5c856ddfad442c5', {
+        //         attribution: '&copy; <a href="https://www.thunderforest.com/maps/landscape/">Thunderforest</a> contributors'
+        //     }).addTo(map);
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
         const locations = [{
                 name: 'PLATINUM AUTOWORKSHOP',
@@ -252,7 +267,9 @@
         ]
 
         locations.forEach((location) => {
-            let marker = L.marker([location.coordinates[0], location.coordinates[1]]).addTo(map).bindPopup(
+            let marker = L.marker([location.coordinates[0], location.coordinates[1]], {
+                color: 'red'
+            }).addTo(map).bindPopup(
                 `<b>${location.name}</b><br>${location.address}`)
         })
 

@@ -1046,7 +1046,7 @@ h6 {
 --------------------------------------------------------------*/
 .blog {
     /* background-color: var(--color-background); */
-    padding: 80px 0;
+    padding: 20px 0 80px;
 }
 
 .blog .posts-list article {
@@ -2147,50 +2147,45 @@ h6 {
     }
 }
 
-.news-bg {
+/* -------------------------------------------------------------------------- */
+/*                                   Banner                                   */
+/* -------------------------------------------------------------------------- */
+
+.banner {
+    position: relative;
+    aspect-ratio: 15/3;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 75% center;
+}
+
+.news {
     background-image: url("../img/News.jpg");
 }
 
-.product-bg {
+.shop {
     background-image: url("../img/shop.jpg");
 }
 
-.portofolio-bg {
+.talk {
     background-image: url("../img/talk.jpg");
 }
 
-.banner {
-    background-size: contain;
-    background-position: center top;
-    background-repeat: no-repeat;
-    min-height: 100px;
-    padding: 0;
-    transition: min-height 100ms ease-in-out;
+.banner.talk {
+    background-position: 65% center;
+    background-size: 133%;
+    /* background-size: 130% auto; */
 }
 
-@media (min-width: 640px) {
-    .banner {
-        min-height: 120px;
-    }
+.banner.shop {
+    background-position: 60% center;
 }
-
-@media (min-width: 768px) {
-    .banner {
-        min-height: 160px;
-    }
-}
-
-@media (min-width: 1024px) {
-    .banner {
-        min-height: 200px;
-    }
-}
-
-@media (min-width: 1280px) {
-    .banner {
-        min-height: 240px;
-    }
-}
+/* -------------------------------------------------------------------------- */
+/*                                    Shop                                    */
+/* -------------------------------------------------------------------------- */
 
 .quantity-box {
     display: flex !important;
@@ -2239,18 +2234,32 @@ h6 {
 /*                                     Map                                    */
 /* -------------------------------------------------------------------------- */
 
-.map-container {
-    width: 50%;
-    min-height: 500px;
-    float: left;
+.with-map-section {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: relative;
 }
 
-.half-width-image {
-    display: block;
-    width: 50%;
-    min-height: 500px;
-    float: right;
+.map-container {
+    aspect-ratio: 4/2;
+    width: 65%;
+    position: relative;
+    overflow: hidden;
+}
+
+.custom-width {
+    width: 35%; /* Set the image width to 25% */
+    height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 0;
+    right: 0; /* Position the image on the right side */
     object-position: right;
-    /* clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%); */
+}
+
+.with-map-section .button-bottom-right-item {
+    right: 0;
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
 }

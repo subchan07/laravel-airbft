@@ -40,14 +40,7 @@
 
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
-        <div class="breadcrumbs d-flex align-items-center news-bg banner">
-            <!-- <div class="container position-relative d-flex flex-column align-items-center">
-          <h2>Blog</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Blog</li>
-          </ol>
-        </div> -->
+        <div class="banner news">
         </div>
         <!-- End Breadcrumbs -->
 
