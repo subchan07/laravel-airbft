@@ -1119,7 +1119,7 @@
         padding-bottom: 20px;
     }
     .related-product .row:nth-child(2) > div {
-        width: 50%;
+        /* width: 50%; */
     }
     .reviews-date {
         padding: 5px 0;
