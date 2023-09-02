@@ -2235,31 +2235,43 @@ h6 {
 /* -------------------------------------------------------------------------- */
 
 .with-map-section {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+    display: block;
     position: relative;
 }
 
 .map-container {
-    aspect-ratio: 4/2;
-    width: 65%;
-    position: relative;
+    aspect-ratio: 6/3;
+    width: 100%;
     overflow: hidden;
 }
 
-.custom-width {
-    width: 35%; /* Set the image width to 25% */
+.overlay-img {
+    position: absolute;
+    width: 45.33%;
     height: 100%;
     object-fit: cover;
-    position: absolute;
-    top: 0;
-    right: 0; /* Position the image on the right side */
     object-position: right;
+    right: 0;
+    top: 0;
+    user-select: none;
+    z-index: 401;
 }
 
-.with-map-section .button-bottom-right-item {
-    right: 0;
-    margin-right: 0.4rem;
-    margin-bottom: 0.4rem;
+.overlay-button {
+    position: absolute;
+    right: 5px;
+    bottom: 30px;
+    z-index: 401;
+}
+
+@media (min-width: 768px) {
+    .overlay-button {
+        bottom: 20%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .map-container {
+        aspect-ratio: 6/2;
+    }
 }
