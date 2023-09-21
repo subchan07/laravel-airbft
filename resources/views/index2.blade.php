@@ -190,7 +190,23 @@
         @endforeach
     </main>
     <!-- End #main -->
+    @foreach ($homes as $home)
+        @if ($home->category != null && $home->category == 'popup-promo' && $home->content->image != null)
+            <section class="popup-promo-container">
+                <div class="popup-promo">
+                    <a href="{{ $home->slug }}">
 
+                        <img src="{{ asset('uploads/' . $home->content->image) }}" class="promo-image"
+                            alt="Promo image">
+                    </a>
+                    <button data-id="promo-close-btn" class="close-btn">
+                        &times;
+                    </button>
+                    <span class="countdown" data-id="promo-countdown"> {{ $home->content->time ?: '5' }} </span>
+                </div>
+            </section>
+        @endif
+    @endforeach
     <!-- ======= Footer ======= -->
     @include('partials.landing-page.footer')
     <!-- End Footer -->
@@ -278,12 +294,41 @@
                 `<b>${location.name}</b><br>${location.address}`)
         })
 
-        // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        //     attribution: '© OpenStreetMap contributors'
-        // }).addTo(map);
-        // L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
-        //     attribution: 'Map tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
-        // }).addTo(map);
+        /* -------------------------------------------------------------------------- */
+        /*                         Popup Promo Script Section                         */
+        /* -------------------------------------------------------------------------- */
+
+        /* ------------------------ Global Popup Promo Script ----------------------- */
+        const closePromo = (element) => {
+            element.classList.add('close');
+            setTimeout(() => element.classList.add('hidden'), 200);
+        }
+
+        /* ------------------------ Popup Promo Close Script ------------------------ */
+        const popupCloseBtns = document.querySelectorAll('[data-id="promo-close-btn"]');
+        if (popupCloseBtns) {
+            popupCloseBtns.forEach(btn => {
+                btn.onclick = () => {
+                    closePromo(btn.closest('.popup-promo-container'));
+                }
+            });
+        }
+
+        /* ---------------------- Popup Promo Countdown Script ---------------------- */
+        window.addEventListener('load', () => {
+            const countdownSpan = document.querySelector('[data-id="promo-countdown"]');
+            let countdown = parseInt(countdownSpan.textContent);
+            let interval;
+            const updateTimer = () => {
+                countdown--;
+                countdownSpan.textContent = countdown;
+                if (countdown == 0) {
+                    clearInterval(interval);
+                    // closePromo(countdownSpan.closest('.popup-promo-container'));
+                }
+            }
+            interval = setInterval(updateTimer, 1000)
+        })
     </script>
 </body>
 

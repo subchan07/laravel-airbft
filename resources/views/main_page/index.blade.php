@@ -129,6 +129,8 @@
                             class="btn btn-sm btn-default">Product Catalog</a>
                         <a href="{{ route('main_page.create', ['mainPage' => 'review', 'website' => $website->id]) }}"
                             class="btn btn-sm btn-default">Review</a>
+                        <a href="{{ route('main_page.create', ['mainPage' => 'popup-promo', 'website' => $website->id]) }}"
+                            class="btn btn-sm btn-default mt-1">Popup Promo</a>
                     </div>
                 </div>
                 <!-- /.modal-content -->
