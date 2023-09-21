@@ -116,18 +116,18 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body text-center">
-                        <a href="{{ route('main_page.create', ['mainPage' => 'shop']) }}"
+                        <a href="{{ route('main_page.create', ['mainPage' => 'shop', 'website' => $website->id]) }}"
                             class="btn btn-sm btn-default">Shop</a>
-                        <a href="{{ route('main_page.create', ['mainPage' => 'article']) }}"
+                        <a href="{{ route('main_page.create', ['mainPage' => 'article', 'website' => $website->id]) }}"
                             class="btn btn-sm btn-default">Article</a>
-                        <a href="{{ route('main_page.create', ['mainPage' => 'call-us-now']) }}"
+                        <a href="{{ route('main_page.create', ['mainPage' => 'call-us-now', 'website' => $website->id]) }}"
                             class="btn btn-sm btn-default">Call
                             Us Now</a>
-                        <a href="{{ route('main_page.create', ['mainPage' => 'image']) }}"
+                        <a href="{{ route('main_page.create', ['mainPage' => 'image', 'website' => $website->id]) }}"
                             class="btn btn-sm btn-default">Image</a>
-                        <a href="{{ route('main_page.create', ['mainPage' => 'product-catalog']) }}"
+                        <a href="{{ route('main_page.create', ['mainPage' => 'product-catalog', 'website' => $website->id]) }}"
                             class="btn btn-sm btn-default">Product Catalog</a>
-                        <a href="{{ route('main_page.create', ['mainPage' => 'review']) }}"
+                        <a href="{{ route('main_page.create', ['mainPage' => 'review', 'website' => $website->id]) }}"
                             class="btn btn-sm btn-default">Review</a>
                     </div>
                 </div>

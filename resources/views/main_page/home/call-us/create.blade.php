@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <p id="errorListForm"></p>
 
-                            <form method="POST" id="formNew" action="{{ route('main_page.store') }}"
+                            <form method="POST" id="formNew" action="{{ route('main_page.store', $website->id) }}"
                                 onsubmit="formUpdate(event, this)" enctype="multipart/form-data">
                                 <input type="hidden" name="category" value="{{ $mainPage }}">
                                 <div class="form-group">
@@ -50,8 +50,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <a href="{{ route('main_page', ['mainPage' => 'home']) }}" id="btnBackForm"
-                                            class="btn btn-secondary"><i class="fa fa-chevron-left"></i> Back</a>
+                                        <a href="{{ route('main_page', ['mainPage' => 'home', 'website' => $website->id]) }}"
+                                            id="btnBackForm" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>
+                                            Back</a>
                                         <button type="submit" class="btn btn-success float-right">Create</button>
                                     </div>
                                 </div>

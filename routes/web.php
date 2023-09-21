@@ -118,14 +118,14 @@ Route::prefix('admin')->group(function () {
     })->name('admin.home');
 
     Route::controller(MainPageController::class)->group(function () {
-        Route::get('/main-page/create/{mainPage}', 'create')->name('main_page.create');
+        Route::get('/main-page/create/{mainPage}/{website}', 'create')->name('main_page.create');
         Route::get('/main-page/{mainPage}/edit', 'edit')->name('main_page.edit');
         Route::get('/main-page/{mainPage?}/{website:slug?}', 'index')->name('main_page');
 
         Route::put('/main-page/changeIsActive/{mainPage}', 'changeIsActive')->name('main_page.changeIsActive');
         Route::put('/main-page/{mainPage}', 'update')->name('main_page.update');
 
-        Route::post('/main-page/create', 'store')->name('main_page.store');
+        Route::post('/main-page/create/{website}', 'store')->name('main_page.store');
         Route::delete('/main-page/{mainPage}', 'destroy')->name('main_page.destroy');
     });
 

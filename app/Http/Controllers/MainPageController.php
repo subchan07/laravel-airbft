@@ -21,41 +21,42 @@ class MainPageController extends Controller
             $mainPages = MainPage::where('sub_page', $mainPage)->where('website_id', 1)->get();
         }
         // dd($mainPages2);
-        return \view('main_page.index', \compact('mainPages', 'title', 'site'));
+        return \view('main_page.index', \compact('mainPages', 'title', 'site', 'website'));
     }
 
-    public function create($mainPage)
+    public function create($mainPage, Website $website)
     {
         if ($mainPage == 'about-us' || $mainPage == 'contact') {
             \abort(404);
         } else if ($mainPage == 'portfolio') {
             $title = 'New Portfolio';
-            return \view('main_page.portfolio.create', \compact('title', 'mainPage'));
+            return \view('main_page.portfolio.create', \compact('title', 'mainPage', 'website'));
         } else if ($mainPage == 'shop') {
             $title = 'New Shop';
             $products = Product::all();
-            return \view('main_page.home.shop.create', \compact('title', 'mainPage', 'products'));
+            return \view('main_page.home.shop.create', \compact('title', 'mainPage', 'products', 'website'));
         } else if ($mainPage == 'article') {
             $title = 'New Article';
             $articles = Article::where('status', 'publish')->get();
-            return \view('main_page.home.article.create', \compact('title', 'mainPage', 'articles'));
+            return \view('main_page.home.article.create', \compact('title', 'mainPage', 'articles', 'website'));
         } else if ($mainPage == 'call-us-now') {
             $title = 'New Call Us Now';
-            return \view('main_page.home.call-us.create', \compact('title', 'mainPage'));
+            return \view('main_page.home.call-us.create', \compact('title', 'mainPage', 'website'));
         } else if ($mainPage == 'image') {
             $title = 'New Image';
-            return \view('main_page.home.image.create', \compact('title', 'mainPage'));
+            return \view('main_page.home.image.create', \compact('title', 'mainPage', 'website'));
         } else if ($mainPage == 'product-catalog') {
             $title = 'New Product Catalog';
-            return \view('main_page.home.catalog.create', \compact('title', 'mainPage'));
+            return \view('main_page.home.catalog.create', \compact('title', 'mainPage', 'website'));
         } else if ($mainPage == 'review') {
             $title = 'New Review';
-            return \view('main_page.home.review.create', \compact('title', 'mainPage'));
+            return \view('main_page.home.review.create', \compact('title', 'mainPage', 'website'));
         }
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Website $website)
     {
+
         $data = [];
         if ($request->category == 'about-us') {
             \abort(404);
@@ -280,7 +281,8 @@ class MainPageController extends Controller
             ];
         }
 
-        MainPage::create($data);
+        // MainPage::create($data);
+        $website->pages()->create($data);
 
         return response()->json([
             'statusFlashMessage' => 'success',

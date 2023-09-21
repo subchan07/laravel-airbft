@@ -24,7 +24,9 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $website->title }}</td>
-                                <td> {{ $loop->index === 0 ? '/' : '/' . $website->slug }} </tf>
+                                <td><a
+                                        href="{{ $loop->index === 0 ? '/' : '/' . $website->slug }}">{{ $loop->index === 0 ? '/' : '/' . $website->slug }}</a>
+                                </td>
                                 <td><a href="{{ $loop->index === 0 ? route('admin.home') : route('main_page', ['mainPage' => 'home', 'website' => $website->slug]) }}"
                                         class="btn btn-secondary">View Site Sections</a></td>
                                 <th><button @disabled($loop->index === 0) class="btn btn-danger" data-toggle="modal"
