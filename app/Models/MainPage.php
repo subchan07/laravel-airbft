@@ -56,6 +56,13 @@ class MainPage extends Model
                     } else {
                         $data[$key]['slug'] = 'javascript:;';
                     }
+                } else if ($home->category == 'popup-promo') {
+                    if ($home->content != null && $home->content->product_id != 0) {
+                        $product = Product::where('id', $home->content->product_id)->first();
+                        $data[$key]['slug'] = "/product/$product->slug";
+                    } else {
+                        $data[$key]['slug'] = 'javascript:;';
+                    };
                 }
             }
         }

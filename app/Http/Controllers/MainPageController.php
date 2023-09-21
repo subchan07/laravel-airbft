@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Website;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class MainPageController extends Controller
 {
@@ -51,6 +52,10 @@ class MainPageController extends Controller
         } else if ($mainPage == 'review') {
             $title = 'New Review';
             return \view('main_page.home.review.create', \compact('title', 'mainPage', 'website'));
+        } else if ($mainPage == 'popup-promo') {
+            $title = 'New Popup Promo';
+            $products = Product::all();
+            return view('main_page.home.popup-promo.create', compact('title', 'mainPage', 'website', 'products'));
         }
     }
 
@@ -279,6 +284,34 @@ class MainPageController extends Controller
                 ],
                 'is_active' => true
             ];
+        } else if ($request->category == 'popup-promo') {
+            $data = [];
+
+            $validated = $request->validate([
+                'time' => ['required'],
+                'product' => ['required'],
+                'upload_image' => ['image', 'mimes:png,jpg,jpeg'],
+                'category' => ['required']
+            ]);
+
+            $data['sub_page'] = 'home';
+            $data['category'] = $validated['category'];
+
+            $content = [];
+            if ($request->hasFile('upload_image')) {
+                $uploadedFile = $request->file('upload_image');
+                $fileName = Str::uuid() . '-' . $uploadedFile->getClientOriginalName();
+                $destinationPath = public_path('uploads/main-page/' . $fileName);
+                $uploadedFile->move(public_path('uploads/main-page/'), $fileName);
+                $content['image'] = 'main-page/' . $fileName;
+            } else {
+                $content['image'] = null;
+            }
+            $content['time'] = $validated['time'];
+            $content['product_id'] = $validated['product'];
+            $data['content']  = $content;
+            $data['website_id'] = $website->id;
+            $data['is_active'] = true;
         }
 
         // MainPage::create($data);
@@ -322,6 +355,11 @@ class MainPageController extends Controller
         } else if ($mainPage->sub_page == 'home' &&  $mainPage->category == 'review') {
             $title = 'Edit Review';
             return \view('main_page.home.review.edit', \compact('title', 'mainPage'));
+        } else if ($mainPage->sub_page == 'home' && $mainPage->category == 'popup-promo') {
+            $title = 'Edit Popup Promo';
+            $products = Product::all();
+
+            return view('main_page.home.popup-promo.edit', compact('title', 'mainPage', 'products'));
         }
     }
 
@@ -563,6 +601,32 @@ class MainPageController extends Controller
             $data = [
                 'content' => $validatedData
             ];
+        } else if ($mainPage->category == 'popup-promo') {
+            $data = [];
+            $content = [];
+            $validated = $request->validate([
+                'time' => ['required'],
+                'product' => ['required'],
+                'upload_image' => ['image', 'mimes:png,jpg,jpeg'],
+                'category' => ['required']
+            ]);
+
+            if ($request->hasFile('upload_image')) {
+                if (File::exists(public_path('uploads/' . $mainPage->content->image))) {
+                    File::delete(public_path('uploads/' . $mainPage->content->image));
+                }
+                $file = $request->file('upload_image');
+                $filename = Str::uuid() . '-' . $file->getClientOriginalName();
+                $destinationPath = public_path('uploads/main-page/');
+                $file->move($destinationPath, $filename);
+                $content['image'] = 'main-page/' . $filename;
+            } else {
+                $content['image'] = $mainPage->content->image;
+            }
+
+            $content['time'] = $validated['time'];
+            $content['product_id'] = $validated['product'];
+            $data['content'] = $content;
         }
 
         MainPage::where('id', $mainPage->id)->update($data);

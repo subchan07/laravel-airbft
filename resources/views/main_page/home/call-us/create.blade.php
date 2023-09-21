@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <a href="{{ route('main_page', ['mainPage' => 'home', 'website' => $website->id]) }}"
+                                        <a href="{{ route('main_page', ['mainPage' => 'home', 'website' => $website->slug]) }}"
                                             id="btnBackForm" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>
                                             Back</a>
                                         <button type="submit" class="btn btn-success float-right">Create</button>

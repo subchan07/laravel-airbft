@@ -1,4 +1,8 @@
 @extends('layouts.main-dashboard')
+@push('css')
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('dashboard-page/plugins/select2/css/select2.min.css') }}">
+@endpush
 
 @section('container-content')
     <!-- Content Wrapper. Contains page content -->
@@ -6,7 +10,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-                <div class="mb-2 row">
+                <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1>{{ $title }}</h1>
                     </div>
@@ -33,58 +37,32 @@
                                 <input type="hidden" name="category" value="{{ $mainPage }}">
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop1">
-                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
-                                        onchange="previewImage(this,'#previewImgDesktop1','#formNew', '.error-image1')"
+                                    <img class="mb-2 col-sm-3" id="previewImgDesktop">
+                                    <input type="file" name="upload_image" id="upload_image" class=" form-control"
+                                        onchange="previewImage(this,'#previewImgDesktop','#formNew', '.error-image')"
                                         required>
-                                    <small class="text-danger error-image1"></small>
+                                    <small class="text-danger error-image"></small>
                                 </div>
                                 <div class="form-group">
-                                    <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop2">
-                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
-                                        onchange="previewImage(this,'#previewImgDesktop2','#formNew', '.error-image2')"
-                                        required>
-                                    <small class="text-danger error-image2"></small>
+                                    <label for="product">Products</label>
+                                    <select name="product" id="product" class="select2" style="width: 100%;" required>
+                                        @foreach ($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                        <option value="0">Maintenance</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop3">
-                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
-                                        onchange="previewImage(this,'#previewImgDesktop3','#formNew', '.error-image3')"
-                                        required>
-                                    <small class="text-danger error-image3"></small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop4">
-                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
-                                        onchange="previewImage(this,'#previewImgDesktop4','#formNew', '.error-image4')"
-                                        required>
-                                    <small class="text-danger error-image4"></small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop5">
-                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
-                                        onchange="previewImage(this,'#previewImgDesktop5','#formNew', '.error-image5')"
-                                        required>
-                                    <small class="text-danger error-image5"></small>
-                                </div>
-                                <div class="form-group">
-                                    <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop6">
-                                    <input type="file" name="upload_image[]" id="upload_image" class="form-control"
-                                        onchange="previewImage(this,'#previewImgDesktop6','#formNew', '.error-image6')"
-                                        required>
-                                    <small class="text-danger error-image6"></small>
+                                    <label for="time">Popup Countdown Time (Second Interval)</label>
+                                    <input type="number" value="5" max="60" name="time" id="time"
+                                        inputmode="tel" class="form-control">
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <a href="{{ route('main_page', ['mainPage' => 'home', 'website' => $website->slug]) }}"
                                             id="btnBackForm" class="btn btn-secondary"><i class="fa fa-chevron-left"></i>
                                             Back</a>
-                                        <button type="submit" class="float-right btn btn-success">Create</button>
+                                        <button type="submit" class="btn btn-success float-right">Create</button>
                                     </div>
                                 </div>
                             </form>
@@ -101,7 +79,7 @@
     <div class="modal fade" id="modal-image-preview">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="p-0 modal-body">
+                <div class="modal-body p-0">
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -111,7 +89,11 @@
     <!-- /.modal -->
 
 
+    <script src="{{ asset('dashboard-page/plugins/select2/js/select2.full.min.js') }}"></script>
     <script>
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
         function formUpdate(event, form) {
             event.preventDefault();
             $.ajax({
