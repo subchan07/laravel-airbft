@@ -5,16 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Models\MainPage;
 use App\Models\Product;
+use App\Models\Website;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class MainPageController extends Controller
 {
-    public function index($mainPage)
+    public function index($mainPage, Website $website)
     {
         $title = $mainPage;
-        $mainPages = MainPage::where('sub_page', $mainPage)->get();
-        return \view('main_page.index', \compact('mainPages', 'title'));
+        $site = $website->slug;
+        if ($mainPage === 'home') {
+            $mainPages = $website->pages()->where('sub_page', $mainPage)->get();
+        } else {
+            $mainPages = MainPage::where('sub_page', $mainPage)->where('website_id', 1)->get();
+        }
+        // dd($mainPages2);
+        return \view('main_page.index', \compact('mainPages', 'title', 'site'));
     }
 
     public function create($mainPage)
@@ -216,7 +223,7 @@ class MainPageController extends Controller
                 'upload_image.*' => 'image|file|mimes:png,jpg,jpeg',
             ]);
 
-            $validatedData = [];
+            $validatedData = ['main-page....'];
             $fileUploads = $request->file('upload_image');
             if ($fileUploads) {
                 foreach ($fileUploads as $key => $value) {
@@ -586,5 +593,10 @@ class MainPageController extends Controller
             'statusFlashMessage' => 'success',
             'textFlashMessage' => '<strong>Success,</strong> Data has been updated!'
         ], 200);
+    }
+
+    public function pageSize()
+    {
+        return $this->belongsTo(Website::class);
     }
 }

@@ -29,9 +29,10 @@
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
 
     {{-- Leaflet Library --}}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
 
     <!-- Template Main CSS File -->
@@ -47,7 +48,8 @@
         <!-- Hero Section - Home Page -->
         <section id="hero" class="hero button-center-right">
 
-            <img loading="lazy" src="{{ asset('uploads/' . $header->content->image) }}" id="hero-bg" alt="Hero Bg Desktop" />
+            <img loading="lazy" src="{{ asset('uploads/' . $header->content->image) }}" id="hero-bg"
+                alt="Hero Bg Desktop" />
 
             @if ($header->content != null)
                 <div class="button-center-right-item">
@@ -59,7 +61,8 @@
 
         @if ($homes[0]->content != null)
             <section class="position-relative button-bottom-center">
-                <img loading="lazy" src="{{ asset('uploads/' . $homes[0]->content->image) }}" class="full-width" alt="Front Shop" />
+                <img loading="lazy" src="{{ asset('uploads/' . $homes[0]->content->image) }}" class="full-width"
+                    alt="Front Shop" />
 
                 <div class="button-center-center-item">
                     <a href="{{ $homes[0]->slug }}" class="button-action">SHOP NOW</a>
@@ -76,8 +79,10 @@
                     @foreach ($categoryProducts as $product)
                         <div class="product-category-carousel-item">
                             <a href="/product?category={{ $product->slug }}" class="image-container">
-                                <img loading="lazy" src="{{ asset('uploads/' . $product->thumbnail) }}" class="custom-card img" alt="Front Shop" />
-                                <img loading="lazy" src="{{ asset('uploads/' . ($product->hover_thumbnail ?: $product->thumbnail)) }}"
+                                <img loading="lazy" src="{{ asset('uploads/' . $product->thumbnail) }}"
+                                    class="custom-card img" alt="Front Shop" />
+                                <img loading="lazy"
+                                    src="{{ asset('uploads/' . ($product->hover_thumbnail ?: $product->thumbnail)) }}"
                                     class="img-hover custom-card" alt="Hover Product">
                             </a>
                         </div>
@@ -97,21 +102,22 @@
                     </a>
                 @endforeach
             </div> --}}
-
         @foreach ($homes as $key => $home)
             @if ($key > 0)
                 @if ($home->content != null && $home->category == 'shop' && $home->content->image != null)
                     <section class="position-relative button-bottom-center">
-                        <img loading="lazy" src="{{ asset('uploads/' . $homes->content->image) }}" class="full-width" alt="Front Shop" />
+                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width"
+                            alt="Front Shop" />
 
                         <div class="button-bottom-center-item">
-                            <a href="{{ $homes->slug }}" class="button-action">SHOP NOW</a>
+                            <a href="{{ $home->slug }}" class="button-action">SHOP NOW</a>
                         </div>
                     </section>
                 @endif
                 @if ($home->content != null && $home->category == 'article' && $home->content->image != null)
                     <section class="position-relative button-center-right">
-                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width" alt="Front Shop" />
+                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width"
+                            alt="Front Shop" />
                         <div class="button-center-right-item">
                             <a href="{{ $home->slug }}" class="button-action">READ MORE</a>
                         </div>
@@ -126,7 +132,8 @@
                             <div class="review-carousel-inner">
                                 @foreach ($home->content as $image)
                                     <div class="review-carousel-item">
-                                        <img loading="lazy" src="{{ asset('uploads/' . $image->image) }}" class="full-width" alt="Review" />
+                                        <img loading="lazy" src="{{ asset('uploads/' . $image->image) }}"
+                                            class="full-width" alt="Review" />
                                     </div>
                                 @endforeach
                             </div>
@@ -147,7 +154,8 @@
                 @if ($home->content != null && $home->category == 'product-catalog' && $home->content->image != null)
                     <section class="position-relative">
                         <a href="/product/catalogue/{{ $home->id }}">
-                            <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width" alt="Product Catalog" />
+                            <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}"
+                                class="full-width" alt="Product Catalog" />
                         </a>
                     </section>
                 @endif
@@ -158,7 +166,8 @@
                 @if ($home->content != null && $home->category == 'call-us-now' && $home->content->image != null)
                     <section class="position-relative button-bottom-right with-map-section">
                         <section id="map" class="map-container"></section>
-                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="overlay-img" alt="Call Us Now" />
+                        <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}"
+                            class="overlay-img" alt="Call Us Now" />
                         <div class="overlay-button">
                             <a href="https://api.whatsapp.com/send?phone={{ $home->content->no_telp }}&text={{ $home->content->text == null ? '' : $home->content->text }}"
                                 target="_blank" class="button-action">CALL US NOW</a>
@@ -172,7 +181,8 @@
                 @if ($home->content != null && $home->category == 'image' && $home->content->image != null)
                     <section class="position-relative">
                         <div>
-                            <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}" class="full-width" alt="Front Shop" />
+                            <img loading="lazy" src="{{ asset('uploads/' . $home->content->image) }}"
+                                class="full-width" alt="Front Shop" />
                         </div>
                     </section>
                 @endif
