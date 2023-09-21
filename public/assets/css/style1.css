@@ -2273,3 +2273,78 @@ h6 {
         aspect-ratio: 6/2;
     }
 }
+
+/* Promo Popup */
+.popup-promo-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
+
+.popup-promo {
+    background-color: white;
+    position: relative;
+    border-radius: 15px;
+    max-width: 500px;
+    max-height: 500px;
+    min-width: 280px;
+}
+
+.popup-promo button {
+    background-color: rgb(194, 194, 194);
+    border: none;
+    border-radius: 9999px;
+    padding: 0 0.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.popup-promo span {
+    background-color: white;
+    border-radius: 15px 0 0 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    line-height: 40px;
+}
+
+.popup-promo img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    max-height: 500px;
+}
+
+.close {
+    animation: close-promo 0.2s forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes close-promo {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
