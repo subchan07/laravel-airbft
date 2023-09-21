@@ -17,7 +17,7 @@ class Website extends Model
 
     public function pages()
     {
-        return $this->hasMany(mainPage::class);
+        return $this->hasMany(MainPage::class);
     }
 
     protected static function boot()
