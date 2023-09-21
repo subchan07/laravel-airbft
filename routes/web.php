@@ -14,6 +14,8 @@ use App\Models\HomePage;
 use App\Models\MainPage;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\WebsiteController;
+use App\Models\Website;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -28,13 +30,14 @@ use Illuminate\Support\Facades\Mail;
 */
 
 Route::get('/', function () {
-    $header = MainPage::getAllDataCustom('header');
+    $header = MainPage::getAllDataCustom('header', 1);
     $categoryProducts = CategoryProduct::all();
-    $homes = MainPage::getAllDataCustom('!header');
+    $homes = MainPage::getAllDataCustom('!header', 1);
     $telp = Mainpage::where('category', 'call-us-now')->first()->content->no_telp;
     // return $homes;
     return view('index2', compact('homes', 'header', 'categoryProducts', 'telp'));
 })->name('index');
+
 
 Route::get('/portfolio', function () {
     $portfolio = MainPage::where('sub_page', 'portfolio')->get();
@@ -106,22 +109,23 @@ Route::get('/product/{product}', function (Product $product) {
     return view('product-detail', compact('product', 'relatedProduct', 'telp'));
 })->name('product.detail');
 
+
+
 Route::prefix('admin')->group(function () {
 
     Route::get('/', function () {
-        return redirect('/admin/main-page/home');
-    });
+        return redirect('/admin/main-page/home/main');
+    })->name('admin.home');
 
     Route::controller(MainPageController::class)->group(function () {
-        Route::get('/main-page/{mainPage?}', 'index')->name('main_page');
         Route::get('/main-page/create/{mainPage}', 'create')->name('main_page.create');
         Route::get('/main-page/{mainPage}/edit', 'edit')->name('main_page.edit');
-
-        Route::post('/main-page/create', 'store')->name('main_page.store');
+        Route::get('/main-page/{mainPage?}/{website:slug?}', 'index')->name('main_page');
 
         Route::put('/main-page/changeIsActive/{mainPage}', 'changeIsActive')->name('main_page.changeIsActive');
         Route::put('/main-page/{mainPage}', 'update')->name('main_page.update');
 
+        Route::post('/main-page/create', 'store')->name('main_page.store');
         Route::delete('/main-page/{mainPage}', 'destroy')->name('main_page.destroy');
     });
 
@@ -182,4 +186,21 @@ Route::prefix('admin')->group(function () {
 
         Route::delete('/category-product/{category}', 'destroy')->name('category-product.destroy');
     });
+
+    Route::controller(WebsiteController::class)->group(function () {
+        Route::get('/website', 'index')->name('website.index');
+        Route::get('/website/create', 'create')->name('website.create');
+        Route::post('/website/close', 'store')->name('website.store');
+        Route::delete('/website/{website}/delete', 'destroy')->name('website.destroy');
+        Route::get('/website/{website}/edit', 'edit')->name('website.edit');
+        Route::put('/website/{website}/update', 'update')->name('website.update');
+    });
+});
+Route::get('/{website:slug}', function (Website $website) {
+    $header = MainPage::getAllDataCustom('header', $website->id);
+    $categoryProducts = CategoryProduct::all();
+    $homes = MainPage::getAllDataCustom('!header', $website->id);
+    $telp = Mainpage::where('category', 'call-us-now')->first()->content->no_telp;
+    // return $homes;
+    return view('index2', compact('homes', 'header', 'categoryProducts', 'telp'));
 });

@@ -20,10 +20,10 @@ class MainPage extends Model
         $this->attributes['content'] = \json_encode($value);
     }
 
-    static public function getAllDataCustom($category)
+    static public function getAllDataCustom($category, $website)
     {
         if ($category == 'header') {
-            $home = MainPage::where('sub_page', 'home')->where('category', 'header')->first();
+            $home = MainPage::where('sub_page', 'home')->where('category', 'header')->where('website_id', $website)->first();
             $data = $home;
             if ($home->content != null && $home->content->product_id != 0) {
                 $product = Product::where('id', $home->content->product_id)->with('category')->first();
@@ -32,7 +32,7 @@ class MainPage extends Model
                 $data['slug'] = 'javascript:;';
             }
         } else if ($category == '!header') {
-            $homes = MainPage::where('sub_page', 'home')->where('category', '!=', 'header')->get();
+            $homes = MainPage::where('sub_page', 'home')->where('category', '!=', 'header')->where('website_id', $website)->get();
             $data = [];
             foreach ($homes as $key => $home) {
                 $data[] = $home;
@@ -61,5 +61,9 @@ class MainPage extends Model
         }
 
         return $data;
+    }
+    public function website()
+    {
+        return $this->belongsTo(Website::class);
     }
 }

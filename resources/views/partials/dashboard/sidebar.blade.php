@@ -55,7 +55,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('main_page', ['mainPage' => 'home']) }}" class="nav-link">
+                            <a href="{{ route('main_page', ['mainPage' => 'home', 'website' => 'main']) }}"
+                                class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Home</p>
                             </a>
@@ -102,6 +103,14 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('website.index') }}" class="nav-link">
+                        {{-- <i class="nav-icon fas fa-tachometer-alt"></i> --}}
+                        <p>
+                            Websites
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('category-product.index') }}" class="nav-link">
