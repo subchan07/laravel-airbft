@@ -68,10 +68,26 @@
                                         @foreach ($mainPages as $main)
                                             <tr>
                                                 @if ($title == 'home')
-                                                    {{-- <td>{{ $main->category }}</td> --}}
-                                                    @if (!is_array($main->content))
-                                                        <td><img src="{{ asset('uploads/' . $main->content->image) }}"
-                                                                alt="content image" style="width: 100%"></td>
+                                                    {{-- <td>{{ $main->category }}</td> --}}                                                   
+                                                    @if ($main->category != 'review')
+                                                        <td class=" main-page-edit">
+                                                            
+                                                            <img class="section-image" src="{{ asset('uploads/' . $main->content->image) }}"
+                                                                alt="content image">
+                                                                <a href="#">
+                                                                    <i class="fas fa-pencil-alt"></i>
+                                                                </a>
+                                                        </td>
+                                                    @else 
+                                                    <td class=" main-page-edit">
+                                                        <div class="carousel-container">                                                            
+                                                            @foreach ($main->content as $content)
+                                                                {{-- <img src="{{ asset('uploads/'.$content->image) }}" alt="Review"> --}}
+                                                            @endforeach
+                                                        </div>
+                                                        {{-- <img src="{{ asset('assets/img/review.jpg')}}"
+                                                        alt="content image" class="section-image">                                                         --}}
+                                                    </td>
                                                     @endif
                                                 @else
                                                     <td class="one-paragraph-datatable" title='{!! $main->content == null ? '' : $main->content->description !!}'>
