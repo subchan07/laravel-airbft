@@ -55,22 +55,24 @@
                                 <table id="tableProduct" class="table table-sm table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             @if ($title == 'home')
-                                                <th>Category</th>
+                                                {{-- <th>Category</th> --}}
                                             @else
                                                 <th>Content</th>
                                             @endif
                                             {{-- <th>Is Active</th> --}}
-                                            <th>Action</th>
+                                            {{-- <th>Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($mainPages as $main)
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
                                                 @if ($title == 'home')
-                                                    <td>{{ $main->category }}</td>
+                                                    {{-- <td>{{ $main->category }}</td> --}}
+                                                    @if (!is_array($main->content))
+                                                        <td><img src="{{ asset('uploads/' . $main->content->image) }}"
+                                                                alt="content image" style="width: 100%"></td>
+                                                    @endif
                                                 @else
                                                     <td class="one-paragraph-datatable" title='{!! $main->content == null ? '' : $main->content->description !!}'>
                                                         {!! $main->content == null ? '' : $main->content->description !!}</td>
@@ -85,7 +87,7 @@
                                                             for="customSwitch{{ $loop->iteration }}"></label>
                                                     </div>
                                                 </td> --}}
-                                                <td>
+                                                {{-- <td>
                                                     <a href="{{ route('main_page.edit', ['mainPage' => $main->id]) }}"
                                                         class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                                     @if ($title == 'portfolio')
@@ -93,7 +95,7 @@
                                                             onclick="deletePortfolio(this)" data-id="{{ $main->id }}"
                                                             class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                                     @endif
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     <tbody>

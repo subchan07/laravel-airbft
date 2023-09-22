@@ -324,7 +324,7 @@
                 countdownSpan.textContent = countdown;
                 if (countdown == 0) {
                     clearInterval(interval);
-                    // closePromo(countdownSpan.closest('.popup-promo-container'));
+                    closePromo(countdownSpan.closest('.popup-promo-container'));
                 }
             }
             interval = setInterval(updateTimer, 1000)
