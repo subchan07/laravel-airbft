@@ -63,7 +63,7 @@
                                             data-srcimg="{{ asset('uploads/' . $image0) }}">Old
                                             image</button>
                                     @endif
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop1">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop1"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop1','#formNew', '.error-image1')">
                                     <small class="text-danger error-image1"></small>
@@ -77,7 +77,7 @@
                                             data-srcimg="{{ asset('uploads/' . $image1) }}">Old
                                             image</button>
                                     @endif
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop2">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop2"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop2','#formNew', '.error-image2')">
                                     <small class="text-danger error-image2"></small>
@@ -91,7 +91,7 @@
                                             data-srcimg="{{ asset('uploads/' . $image2) }}">Old
                                             image</button>
                                     @endif
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop3">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop3"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop3','#formNew', '.error-image3')">
                                     <small class="text-danger error-image3"></small>
@@ -105,7 +105,7 @@
                                             data-srcimg="{{ asset('uploads/' . $image3) }}">Old
                                             image</button>
                                     @endif
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop4">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop4"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop4','#formNew', '.error-image4')">
                                     <small class="text-danger error-image4"></small>
@@ -119,7 +119,7 @@
                                             data-srcimg="{{ asset('uploads/' . $image4) }}">Old
                                             image</button>
                                     @endif
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop5">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop5"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop5','#formNew', '.error-image5')">
                                     <small class="text-danger error-image5"></small>
@@ -133,7 +133,7 @@
                                             data-srcimg="{{ asset('uploads/' . $image5) }}">Old
                                             image</button>
                                     @endif
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop6">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop6"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop6','#formNew', '.error-image6')">
                                     <small class="text-danger error-image6"></small>
@@ -149,6 +149,14 @@
                             </form>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-2">           
+                    <img src="{{ $mainPage->content[0]->image ? asset('uploads/'.$mainPage->content[0]->image) : "" }}" alt="preview-img" id="previewImgDesktop1" style="width:70%; height:auto">
+                    <img src="{{ $mainPage->content[1]->image ? asset('uploads/'.$mainPage->content[1]->image) : "" }}" alt="preview-img" id="previewImgDesktop2" style="width:70%; height:auto">
+                    <img src="{{ $mainPage->content[2]->image ? asset('uploads/'.$mainPage->content[2]->image) : "" }}" alt="preview-img" id="previewImgDesktop3" style="width:70%; height:auto">
+                    <img src="{{ $mainPage->content[3]->image ? asset('uploads/'.$mainPage->content[3]->image) : "" }}" alt="preview-img" id="previewImgDesktop4" style="width:70%; height:auto">
+                    <img src="{{ $mainPage->content[4]->image ? asset('uploads/'.$mainPage->content[4]->image) : "" }}" alt="preview-img" id="previewImgDesktop5" style="width:70%; height:auto">
+                    <img src="{{ $mainPage->content[5]->image ? asset('uploads/'.$mainPage->content[5]->image) : "" }}" alt="preview-img" id="previewImgDesktop6" style="width:70%; height:auto">                    
                 </div>
             </div>
         </section>
@@ -224,7 +232,7 @@
             const errorImageText = document.querySelector(errorImage)
 
             // if (fileExtension.includes(ekstensiValid)) {
-            imgPreview.style.display = 'block'
+            // imgPreview.style.display = 'block'            
             const oFReader = new FileReader();
             oFReader.readAsDataURL(image.files[0])
 

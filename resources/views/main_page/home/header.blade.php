@@ -38,15 +38,15 @@
                                 <input type="hidden" name="category" value="{{ $mainPage->category }}">
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    @if ($mainPage->content != null && $mainPage->content->image != null)
+                                    {{-- @if ($mainPage->content != null && $mainPage->content->image != null)
                                         <button type="button" class="badge badge-dark modalImagePreview float-right"
                                             data-toggle="modal" data-target="#modal-image-preview"
                                             data-altimg="{{ $mainPage->category }}"
                                             data-srcimg="{{ asset('uploads/' . $mainPage->content->image) }}">Old
                                             image</button>
-                                    @endif
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop">
-                                    <input type="file" name="upload_image" id="upload_image" class="form-control"
+                                    @endif --}}
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop"> --}}
+                                    <input type="file" name="upload_image" id="upload_image" class="form-control" accept=".png, .jpg, .gif, .jpeg"
                                         onchange="previewImage(this,'#previewImgDesktop','#formNew', '.error-image')">
                                     <small class="text-danger error-image"></small>
                                 </div>
@@ -76,6 +76,7 @@
                             </form>
                         </div>
                     </div>
+                    <img src="{{ $mainPage->content->image ? asset('uploads/'.$mainPage->content->image) : "" }}" alt="" id="previewImgDesktop" style="width:100%; height:auto">
                 </div>
             </div>
         </section>
@@ -154,7 +155,7 @@
             const errorImageText = document.querySelector(errorImage)
 
             // if (fileExtension.includes(ekstensiValid)) {
-            imgPreview.style.display = 'block'
+            // imgPreview.style.display = 'block'
             const oFReader = new FileReader();
             oFReader.readAsDataURL(image.files[0])
 

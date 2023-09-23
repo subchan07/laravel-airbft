@@ -33,7 +33,7 @@
                                 <input type="hidden" name="category" value="{{ $mainPage }}">
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop1">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop1"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop1','#formNew', '.error-image1')"
                                         required>
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop2">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop2"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop2','#formNew', '.error-image2')"
                                         required>
@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop3">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop3"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop3','#formNew', '.error-image3')"
                                         required>
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop4">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop4"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop4','#formNew', '.error-image4')"
                                         required>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop5">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop5"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop5','#formNew', '.error-image5')"
                                         required>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop6">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop6"> --}}
                                     <input type="file" name="upload_image[]" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop6','#formNew', '.error-image6')"
                                         required>
@@ -90,6 +90,14 @@
                             </form>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-2">           
+                    <img src="" alt="preview-img" id="previewImgDesktop1" style="width:70%; height:auto">
+                    <img src="" alt="preview-img" id="previewImgDesktop2" style="width:70%; height:auto">
+                    <img src="" alt="preview-img" id="previewImgDesktop3" style="width:70%; height:auto">
+                    <img src="" alt="preview-img" id="previewImgDesktop4" style="width:70%; height:auto">
+                    <img src="" alt="preview-img" id="previewImgDesktop5" style="width:70%; height:auto">
+                    <img src="" alt="preview-img" id="previewImgDesktop6" style="width:70%; height:auto">                    
                 </div>
             </div>
         </section>

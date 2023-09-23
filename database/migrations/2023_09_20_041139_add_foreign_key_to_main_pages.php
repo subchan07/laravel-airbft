@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('main_pages', function (Blueprint $table) {
-            $table->foreignId('website_id')->default(1)->constrained('websites')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('website_id')->default(1)->constrained('websites')->cascadeOnDelete()->cascadeOnUpdate();            
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('main_pages', function (Blueprint $table) {
-            //
+            $table->dropColumn('website_id');            
         });
     }
 };

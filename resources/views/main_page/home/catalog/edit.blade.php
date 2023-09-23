@@ -48,13 +48,13 @@
                                 @method('put')
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    @if ($image != '')
+                                    {{-- @if ($image != '')
                                         <button type="button" class="badge badge-dark modalFilePreview float-right"
                                             data-toggle="modal" data-target="#modal-file-preview" data-typeimg="img"
                                             data-altimg="{{ $mainPage->category }}"
                                             data-srcimg="{{ asset('uploads/' . $image) }}">Old
                                             image</button>
-                                    @endif
+                                    @endif --}}
                                     <img class="mb-2 col-sm-3" id="previewImgDesktop">
                                     <input type="file" name="upload_image" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop','#formNew', '.error-image')">
@@ -82,6 +82,7 @@
                             </form>
                         </div>
                     </div>
+                    <img src="{{ $mainPage->content->image ? asset('uploads/'.$mainPage->content->image) : "" }}" alt="" id="previewImgDesktop" style="width:100%; height:auto">
                 </div>
             </div>
         </section>
@@ -168,7 +169,7 @@
             const errorImageText = document.querySelector(errorImage)
 
             // if (fileExtension.includes(ekstensiValid)) {
-            imgPreview.style.display = 'block'
+            // imgPreview.style.display = 'block'
             const oFReader = new FileReader();
             oFReader.readAsDataURL(image.files[0])
 

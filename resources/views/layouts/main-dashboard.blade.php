@@ -22,6 +22,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dashboard-page/dist/css/adminlte.min.css') }}">
     @stack('css')
+    @vite(['resources/css/app.css','resources/js/main.ts'])
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
