@@ -291,7 +291,8 @@ class MainPageController extends Controller
                 'time' => ['required'],
                 'product' => ['required'],
                 'upload_image' => ['image', 'mimes:png,jpg,jpeg'],
-                'category' => ['required']
+                'category' => ['required'],
+                'date' => ['date','required'],
             ]);
 
             $data['sub_page'] = 'home';
@@ -308,6 +309,7 @@ class MainPageController extends Controller
                 $content['image'] = null;
             }
             $content['time'] = $validated['time'];
+            $content['date'] = $validated['date'];
             $content['product_id'] = $validated['product'];
             $data['content']  = $content;
             $data['website_id'] = $website->id;
@@ -608,7 +610,8 @@ class MainPageController extends Controller
                 'time' => ['required'],
                 'product' => ['required'],
                 'upload_image' => ['image', 'mimes:png,jpg,jpeg'],
-                'category' => ['required']
+                'category' => ['required'],
+                'date' => ['date','required'],
             ]);
 
             if ($request->hasFile('upload_image')) {
@@ -625,6 +628,7 @@ class MainPageController extends Controller
             }
 
             $content['time'] = $validated['time'];
+            $content['date'] = $validated['date'];
             $content['product_id'] = $validated['product'];
             $data['content'] = $content;
         }

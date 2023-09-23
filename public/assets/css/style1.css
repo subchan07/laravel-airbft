@@ -2298,7 +2298,7 @@ h6 {
     min-width: 280px;
 }
 
-.popup-promo button {
+.popup-promo .close-btn {
     background-color: rgb(194, 194, 194);
     border: none;
     border-radius: 9999px;
@@ -2307,20 +2307,6 @@ h6 {
     top: 0;
     right: 0;
     transform: translate(50%, -50%);
-}
-
-.popup-promo span {
-    background-color: white;
-    border-radius: 15px 0 0 0;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    font-size: 25px;
-    line-height: 40px;
 }
 
 .popup-promo img {
