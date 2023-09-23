@@ -39,8 +39,8 @@
                                 <input type="hidden" name="category" value="{{ $mainPage }}">
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" src="{{ asset('uploads/' . $mainPage->content->image) }}"
-                                        id="previewImgDesktop">
+                                    {{-- <img class="mb-2 col-sm-3" src="{{ asset('uploads/' . $mainPage->content->image) }}"
+                                        id="previewImgDesktop"> --}}
                                     <input type="file" name="upload_image" id="upload_image" class=" form-control"
                                         onchange="previewImage(this,'#previewImgDesktop','#formNew', '.error-image')">
                                     <small class="text-danger error-image"></small>
@@ -71,6 +71,7 @@
                             </form>
                         </div>
                     </div>
+                    <img src="{{ $mainPage->content->image ? asset('uploads/'.$mainPage->content->image) : "" }}" alt="" id="previewImgDesktop" style="width:100%; height:auto">
                 </div>
             </div>
         </section>

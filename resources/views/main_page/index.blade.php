@@ -68,26 +68,39 @@
                                         @foreach ($mainPages as $main)
                                             <tr>
                                                 @if ($title == 'home')
-                                                    {{-- <td>{{ $main->category }}</td> --}}                                                   
+                                                    {{-- <td>{{ $main->category }}</td> --}}
                                                     @if ($main->category != 'review')
                                                         <td class=" main-page-edit">
-                                                            
-                                                            <img class="section-image" src="{{ asset('uploads/' . $main->content->image) }}"
+
+                                                            <img class="section-image"
+                                                                src="{{ asset('uploads/' . $main->content->image) }}"
                                                                 alt="content image">
-                                                                <a href="#">
-                                                                    <i class="fas fa-pencil-alt"></i>
-                                                                </a>
+                                                            <a href="{{ route('main_page.edit',$main->id) }}">
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a>
                                                         </td>
-                                                    @else 
-                                                    <td class=" main-page-edit">
-                                                        <div class="carousel-container">                                                            
-                                                            @foreach ($main->content as $content)
-                                                                {{-- <img src="{{ asset('uploads/'.$content->image) }}" alt="Review"> --}}
-                                                            @endforeach
-                                                        </div>
-                                                        {{-- <img src="{{ asset('assets/img/review.jpg')}}"
+                                                    @else
+                                                        <td class=" main-page-edit">
+                                                            <div class="caroul-container">
+                                                                <div class="caroul">
+                                                                    @foreach ($main->content as $content)
+                                                                        <div class="caroul-item">
+                                                                            <img src="{{ asset('uploads/' . $content->image) }}"
+                                                                                alt="content image" class="caroul-image">
+                                                                        </div>
+                                                                    @endforeach
+                                                                    <!-- Add more carousel items here -->
+                                                                </div>
+                                                                <a href="{{ route('main_page.edit',$main->id) }}">
+                                                                    <i class="fas fa-pencil-alt"></i>
+                                                                </a>    
+                                                                <button class="caroul-button prev">Previous</button>
+                                                                <button class="caroul-button next">Next</button>
+                                                                
+                                                            </div>
+                                                            {{-- <img src="{{ asset('assets/img/review.jpg')}}"
                                                         alt="content image" class="section-image">                                                         --}}
-                                                    </td>
+                                                        </td>
                                                     @endif
                                                 @else
                                                     <td class="one-paragraph-datatable" title='{!! $main->content == null ? '' : $main->content->description !!}'>

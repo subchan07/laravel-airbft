@@ -37,7 +37,7 @@
                                 <input type="hidden" name="category" value="{{ $mainPage }}">
                                 <div class="form-group">
                                     <label for="upload_image">Upload Image</label>
-                                    <img class="mb-2 col-sm-3" id="previewImgDesktop">
+                                    {{-- <img class="mb-2 col-sm-3" id="previewImgDesktop"> --}}
                                     <input type="file" name="upload_image" id="upload_image" class="form-control"
                                         onchange="previewImage(this,'#previewImgDesktop','#formNew', '.error-image')"
                                         required>
@@ -63,6 +63,14 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+                    <div class="col-md-2">           
+                        <img src="{{ $mainPage->content[0]->image ? asset('uploads/'.$mainPage->content[0]->image) : "" }}" alt="preview-img" id="previewImgDesktop1" style="width:70%; height:auto">
+                        <img src="{{ $mainPage->content[1]->image ? asset('uploads/'.$mainPage->content[1]->image) : "" }}" alt="preview-img" id="previewImgDesktop2" style="width:70%; height:auto">
+                        <img src="{{ $mainPage->content[2]->image ? asset('uploads/'.$mainPage->content[2]->image) : "" }}" alt="preview-img" id="previewImgDesktop3" style="width:70%; height:auto">
+                        <img src="{{ $mainPage->content[3]->image ? asset('uploads/'.$mainPage->content[3]->image) : "" }}" alt="preview-img" id="previewImgDesktop4" style="width:70%; height:auto">
+                        <img src="{{ $mainPage->content[4]->image ? asset('uploads/'.$mainPage->content[4]->image) : "" }}" alt="preview-img" id="previewImgDesktop5" style="width:70%; height:auto">
+                        <img src="{{ $mainPage->content[5]->image ? asset('uploads/'.$mainPage->content[5]->image) : "" }}" alt="preview-img" id="previewImgDesktop6" style="width:70%; height:auto">                    
                     </div>
                 </div>
             </div>
