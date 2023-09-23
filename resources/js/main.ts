@@ -40,7 +40,7 @@ window.onload = () => {
                     return
                 }
     
-                const hours = Math.min(Math.floor(timeRemaining / (1000 * 60 * 60)),99);
+                const hours = Math.min(Math.floor(timeRemaining / (1000 * 60 * 60)),99);    
                 const minute = Math.floor(timeRemaining % (1000 * 60 * 60) / (1000 * 60));
                 const second = Math.floor(timeRemaining % (1000 * 60) / (1000));
                 
