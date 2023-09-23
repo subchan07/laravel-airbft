@@ -97,3 +97,107 @@
     right:0
 }
 
+
+
+/* Popup Promo Countdown */
+
+.countdown {
+    background-color: #dc2626;
+    position:absolute;
+    bottom:0;
+    left:0;
+    width: 50%;
+    height: 120px    ;    
+    padding: 0.75rem;
+    display: flex;
+    flex-direction:column;
+    gap: 0.5rem 0;
+    align-items: center;
+    user-select: none;    
+    font-family: monospace;
+}
+
+.timer-container {
+    color:white;
+    font-size: 2rem;
+    display:flex;
+    justify-content: space-around;
+    border: 3px solid #1e293b;
+    position:relative;
+    padding: 1rem 0 0 0;
+    flex: 0 0;
+    width: 100%;
+}
+
+.timer-container .timer-title {
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size: 0.75rem;
+    background-color:#dc2626;     
+    padding: 0 0.5rem;
+    width: max-content;
+    font-weight: 600;    
+}
+
+.timer-format {
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    font-weight:600
+}
+
+.time {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.75rem;
+    font-weight: 900;
+}
+
+.countdown .buy-now {
+    background-color: #fde047;
+    flex: 0 0;
+    width: 100%;
+    border:none;    
+    color:red;
+    font-weight: bold;    
+    font-size: 0.8rem;
+    transition: background-color 0.2s ease;
+    text-align:center;
+}
+.countdown .buy-now:hover {
+    background-color:#eab308;
+}
+
+.offer-end {
+    position:absolute;
+    background-color: #eab308;
+    font-size: 1rem;
+    width: 100%;
+    text-align:center;
+}
+
+@media (min-width: 768px) {     
+    .countdown {
+        height: 150px
+    }
+    .countdown .buy-now {
+        width: 80%;
+        font-size: 1rem;
+    }
+    .timer-container{
+        font-size: 3rem;
+    }
+    .time {
+        line-height: 3rem;
+    }
+
+    .timer-container .timer-title {
+        font-size:1rem;
+    }
+    .offer-end {
+        font-size: 1.75rem;
+    }
+}

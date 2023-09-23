@@ -53,9 +53,9 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="time">Popup Countdown Time (Second Interval)</label>
-                                    <input type="number" value="5" max="60" name="time" id="time"
-                                        inputmode="tel" class="form-control">
+                                    <label for="date" class="d-block">Popup Countdown Time</label>                                    
+                                    <input type="date" value="{{ date('Y-m-d') }}" name="date" id="date">
+                                    <input type="time" value="00:00" name="time" id="time">
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
