@@ -57,8 +57,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="time" class="d-block">Popup Countdown Time (Second Interval)</label>
-                                    <input type="date" value="{{ $mainPage->content->date }}" name="date" id="date">
-                                    <input type="time" value="{{ $mainPage->content->time }}" name="time" id="time">
+                                    <input type="date" value="{{ isset($mainPage->content->date) ? $mainPage->content->date : date('Y-m-d') }}" name="date" id="date">
+                                    <input type="time" value="{{ isset($mainPage->content->time) ? $mainPage->content->time : '00:00' }}" name="time" id="time">
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
