@@ -37,7 +37,7 @@ Route::get('/', function () {
     return view('index2', compact('homes', 'header', 'categoryProducts', 'telp'));
 })->name('index');
 
-Route::get('/promotion', function () {
+Route::get('/promosi', function () {
     return view('promotion');
 });
 
