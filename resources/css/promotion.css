@@ -60,4 +60,12 @@ main img {
     footer {
         font-size: 1rem;
     }
+
+    nav img {
+        aspect-ratio: 16/1;
+    }
+
+    footer {
+        aspect-ratio: 16/1;
+    }
 }
