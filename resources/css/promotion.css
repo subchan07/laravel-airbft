@@ -28,6 +28,9 @@ nav {
 
 nav img {
     width: 100%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 16/2;
 }
 
 footer {
@@ -39,7 +42,9 @@ footer {
     justify-content: space-between;
     padding: 0.5rem;
     z-index: 20;
-    font-size: 0.6rem;
+    font-size: 0.65rem;
+    aspect-ratio: 16/2;
+    align-items: center;
 }
 
 footer .whatsapp {
