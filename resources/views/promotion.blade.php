@@ -24,7 +24,8 @@
         <img src="{{ asset('assets/img/promo-page/section2.png') }}" alt="Section 2">
         <img src="{{ asset('assets/img/promo-page/section3.png') }}" alt="Section 3">
         <img src="{{ asset('assets/img/promo-page/section4.png') }}" alt="Section 4">
-        <a href="https://wa.me/+6282260000055" target="_blank">
+        <a href="https://wa.me/+6282260000055?text=Hallo,%20Saya%20ingin%20bertanya%20tentang%20produk%20Airbft"
+            target="_blank">
             <img src="{{ asset('assets/img/promo-page/section5.png') }}" alt="Section 5">
         </a>
 
@@ -33,7 +34,8 @@
     <footer>
         <a href="mailto:airbft.indonesia.01@gmail.com" target="_blank" class="email"><i
                 class="fa-solid fa-envelope"></i> airbft.indonesia.01@gmail.com</a>
-        <a href="https://wa.me/+6282260000055" target="_blank" class="whatsapp"><i class="fa-solid fa-phone"></i>
+        <a href="https://wa.me/+6282260000055?text=Hallo,%20Saya%20ingin%20bertanya%20tentang%20produk%20Airbft"
+            target="_blank" class="whatsapp"><i class="fa-solid fa-phone"></i>
             +62 822 600 000 55</a>
     </footer>
 </body>
