@@ -36,7 +36,7 @@
 
 
     <!-- Template Main CSS File -->
-    @vite(['public/assets/css/style1.css', 'resources/js/index2.js','resources/css/app.css','resources/js/main.ts'])
+    @vite(['public/assets/css/style1.css', 'resources/js/index2.js', 'resources/css/app.css', 'resources/js/main.ts'])
 </head>
 
 <body>
@@ -192,7 +192,7 @@
     <!-- End #main -->
     @foreach ($homes as $home)
         @if ($home->category != null && $home->category == 'popup-promo' && $home->content->image != null)
-        <section class="popup-promo-container">                
+            <section class="popup-promo-container">
                 <div class="popup-promo">
                     <a href="{{ $home->slug }}">
 
@@ -202,16 +202,20 @@
                     <button data-id="promo-close-btn" class="close-btn">
                         &times;
                     </button>
-                   <div class="countdown" draggable="false">
-                        <div class="timer-container" data-date="{{ $home->content->date }}" data-time="{{ $home->content->time }}">
+                    <div class="countdown" draggable="false">
+                        <div class="timer-container" data-date="{{ $home->content->date }}"
+                            data-time="{{ $home->content->time }}">
                             <span class="timer-title">OFFER END IN</span>
-                            <div class="time"><span class="hour">00</span><span class="timer-format">HRS</span></div>
-                            <div class="time"><span class="minute">00</span><span class="timer-format">MIN</span></div>
-                            <div class="time"><span class="second">00</span><span class="timer-format">SEC</span></div>            
-                            <span class="offer-end hidden">OFFER ENDED</span>                
+                            <div class="time"><span class="hour">00</span><span class="timer-format">HRS</span>
+                            </div>
+                            <div class="time"><span class="minute">00</span><span class="timer-format">MIN</span>
+                            </div>
+                            <div class="time"><span class="second">00</span><span class="timer-format">SEC</span>
+                            </div>
+                            <span class="offer-end hidden">OFFER ENDED</span>
                         </div>
                         <a href="{{ $home->slug }}" class="buy-now">BELI SEKARANG!!</a>
-                   </div>
+                    </div>
                 </div>
             </section>
         @endif
