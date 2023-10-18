@@ -37,6 +37,10 @@ Route::get('/', function () {
     return view('index2', compact('homes', 'header', 'categoryProducts', 'telp'));
 })->name('index');
 
+Route::get('/promotion', function () {
+    return view('promotion');
+});
+
 
 Route::get('/portfolio', function () {
     $portfolio = MainPage::where('sub_page', 'portfolio')->get();
