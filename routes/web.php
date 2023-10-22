@@ -198,6 +198,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/website/{website}/edit', 'edit')->name('website.edit');
         Route::put('/website/{website}/update', 'update')->name('website.update');
     });
+
+    Route::view('promotion', 'promotion.index')->name('promotion.index');
 });
 Route::get('/{website:slug}', function (Website $website) {
     $header = MainPage::getAllDataCustom('header', $website->id);
