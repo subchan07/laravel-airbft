@@ -7,7 +7,27 @@
                 data-target="#action-instruction"><i class="fas fa-question"></i></button>
         </section>
         <section class="promotion-contents">
-            <div class="img-container">
+            @foreach ($promotions as $promotion)
+                <div class="img-container">
+                    <img src="/storage/{{ $promotion->path }}" alt="Promotion Header"
+                        class="{{ $loop->index == 0 ?? 'aspect-16/1' }} promotion-image">
+                    <div class="action-container">
+                        <button data-id="{{ $promotion->id }}" data-order="{{ $promotion->order }}"
+                            class="edit-btn instruction-btn"><i class="fas fa-edit fa-xs"
+                                style="color: #ffffff;"></i></button>
+                        <button data-id="{{ $promotion->id }}" data-order="{{ $promotion->order }}"
+                            class="up-btn instruction-btn"><i class="fas fa-arrow-alt-circle-up "
+                                style="color: #fff;"></i></button>
+                        <button data-id="{{ $promotion->id }}" data-order="{{ $promotion->order }}"
+                            class="down-btn instruction-btn"><i class="fas fa-arrow-alt-circle-down"
+                                style="color: #fff;"></i></button>
+                        <button data-id="{{ $promotion->id }}" data-order="{{ $promotion->order }}"
+                            class="delete-btn instruction-btn"><i class="fas fa-window-close"
+                                style="color: #ffffff;"></i></button>
+                    </div>
+                </div>
+            @endforeach
+            {{-- <div class="img-container">
                 <img src="{{ asset('assets/img/promo-page/navbar.png') }}" alt="Promotion Header"
                     class="aspect-16/1 promotion-image">
                 <div class="action-container">
@@ -76,7 +96,7 @@
                     <button class="delete-btn instruction-btn"><i class="fas fa-window-close"
                             style="color: #ffffff;"></i></button>
                 </div>
-            </div>
+            </div> --}}
         </section>
         <section class="action-instruction hidden" id="action-instruction">
             <div class="content">
@@ -84,6 +104,9 @@
                 <hr>
                 <article class="important">
                     <small> ! Untuk mobile, tombol action akan muncul saat gambar yang akan di edit di sentuh</small>
+                    <br>
+                    <small> ! Gambar pertama/paling atas akan dianggap sebagain gambar header yanga akan ditampilkan dengan
+                        ratio 16/1</small>
                 </article>
                 <article class="instruction">
                     <button class="edit-btn instruction-btn"><i class="fas fa-edit fa-xs"
@@ -112,8 +135,9 @@
         <section class="fixed-btns">
             <button class="add-new-image" id="add-another-image" title="Add another image in the bottom"><i
                     class="fas fa-plus-square"></i></button>
-            <button disabled class="save-change">Save</button>
+            <button disabled class="save-change" id="save-change">Save</button>
         </section>
+        <div id="toast" class="toast"></div>
     </main>
 @endsection
 @push('script')

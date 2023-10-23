@@ -339,7 +339,7 @@ main.promotion {
 .instruction-close:hover {
     background-color: #0369a1;
 }
-/* 
+/*
 .mobile-action {
     position: fixed;
     z-index: 10000;
@@ -412,10 +412,23 @@ main.promotion {
     border-radius: 5px;
 }
 
+.add-new-image:hover {
+    background-color: #16a34a;
+}
+
 .save-change {
     background-color: #2563eb;
     color: white;
     border: none;
     font-size: 1.25rem;
     border-radius: 5px;
+}
+
+.save-change:disabled,
+.save-change:disabled:hover {
+    background-color: #60a5fa;
+}
+
+.save-change:hover {
+    background-color: #1d4ed8;
 }
