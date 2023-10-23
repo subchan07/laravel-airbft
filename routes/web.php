@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\WebsiteController;
 use App\Models\Promotion;
 use App\Models\Website;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
@@ -38,6 +39,16 @@ Route::get('/', function () {
     $telp = Mainpage::where('category', 'call-us-now')->first()->content->no_telp;
     return view('index2', compact('homes', 'header', 'categoryProducts', 'telp'));
 })->name('index');
+
+Route::get('/maintenance-mode', function () {
+    Artisan::call('down', ['--secret' => 'developer']);
+    return 'Maintenance mode is now enabled';
+});
+
+Route::get('/maintenance-mode/off', function () {
+    Artisan::call('up');
+    return 'Maintenance mode is now disabled';
+});
 
 Route::get('/promosi', function () {
     Promotion::where('path', null)->delete();
