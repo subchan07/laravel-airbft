@@ -16,19 +16,15 @@
 
 <body>
     <nav>
-        <img src="{{ asset('assets/img/promo-page/navbar.png') }}" alt="AirBft">
+        <img src="/storage/{{ $promotions[0]->path }}" alt="AirBft" class="aspect-16/1">
     </nav>
 
     <main>
-        <img src="{{ asset('assets/img/promo-page/section1.png') }}" alt="Section 1">
-        <img src="{{ asset('assets/img/promo-page/section2.png') }}" alt="Section 2">
-        <img src="{{ asset('assets/img/promo-page/section3.png') }}" alt="Section 3">
-        <img src="{{ asset('assets/img/promo-page/section4.png') }}" alt="Section 4">
-        <a href="https://wa.me/+6282260000055?text=Hallo,%20Saya%20ingin%20bertanya%20tentang%20produk%20Airbft"
-            target="_blank">
-            <img src="{{ asset('assets/img/promo-page/section5.png') }}" alt="Section 5">
-        </a>
-
+        @foreach ($promotions as $promotion)
+            @if ($loop->index > 0)
+                <img src="/storage/{{ $promotion->path }}" alt="Section {{ $promotion->order }}">
+            @endif
+        @endforeach
     </main>
 
     <footer>

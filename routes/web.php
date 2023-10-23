@@ -15,8 +15,10 @@ use App\Models\MainPage;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\WebsiteController;
+use App\Models\Promotion;
 use App\Models\Website;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +40,9 @@ Route::get('/', function () {
 })->name('index');
 
 Route::get('/promosi', function () {
-    return view('promotion');
+    Promotion::where('path', null)->delete();
+    $promotions = Promotion::orderBy('order')->get();
+    return view('promotion', compact('promotions'));
 });
 
 
@@ -198,7 +202,21 @@ Route::prefix('admin')->group(function () {
         Route::get('/website/{website}/edit', 'edit')->name('website.edit');
         Route::put('/website/{website}/update', 'update')->name('website.update');
     });
+
+    Route::get('promotion', function () {
+        Promotion::where('path', null)->delete();
+        $promotions = Promotion::orderBy('order')->get();
+        return view('promotion.index', compact('promotions'));
+    })->name('promotion.index');
 });
+
+Route::get('/storage/{filename}', function (string $filename) {
+    $file = Storage::get($filename);
+    $mimeType = Storage::mimeType($filename);
+
+    return response($file)->header('Content-Type', $mimeType);
+})->where('filename', '.*');
+
 Route::get('/{website:slug}', function (Website $website) {
     $header = MainPage::getAllDataCustom('header', $website->id);
     $categoryProducts = CategoryProduct::all();

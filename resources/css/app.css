@@ -1,3 +1,15 @@
+/* -------------------------------- Utilities ------------------------------- */
+
+.aspect-16\/1 {
+    aspect-ratio: 16/2;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* -------------------------------- Main Page ------------------------------- */
+
 .main-page-edit {
     position: relative;
 }
@@ -5,7 +17,7 @@
 .main-page-edit .section-image {
     width: 100%;
     height: auto;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .main-page-edit a {
@@ -16,12 +28,12 @@
     color: white;
     border: none;
     text-align: center;
-    aspect-ratio: 1/1;    
+    aspect-ratio: 1/1;
     transition: all 0.2s ease-in;
     opacity: 0;
     cursor: pointer;
     padding: 0 0.25rem;
-    font-size: 1.25rem;    
+    font-size: 1.25rem;
 }
 
 .main-page-edit a:hover {
@@ -34,122 +46,120 @@
 }
 
 .caroul-container {
-    display:flex;
-    flex-direction:row;
-    overflow:hidden;
-    position:relative;
-    background-image: url('../../public/assets/img/review.jpg');
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    background-image: url("../../public/assets/img/review.jpg");
     background-size: contain;
 }
 
 .caroul {
-    display:flex;
-    overflow-x:auto;    
-    transition:transform 0.3s ease;
+    display: flex;
+    overflow-x: auto;
+    transition: transform 0.3s ease;
     scrollbar-width: none; /* Hide Firefox scrollbar */
     -ms-overflow-style: none; /* Hide IE scrollbar */
     overflow: -moz-scrollbar-none; /* Hide older versions of Firefox scrollbar */
 }
 
 .caroul::-webkit-scrollbar {
-    width:0;
-    height:0;
+    width: 0;
+    height: 0;
 }
 
 .caroul:hover + a {
-    opacity:1
+    opacity: 1;
 }
 
-.caroul::-webkit-scrollbar-track{
-    background:transparent;
+.caroul::-webkit-scrollbar-track {
+    background: transparent;
 }
 
-.caroul::-webkit-scrollbar-thumb{
-    background-color:transparent;
-    border:none;
+.caroul::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: none;
 }
 
 .caroul-item {
-    flex: 0 0 33.33%
+    flex: 0 0 33.33%;
 }
 
 .caroul-image {
     width: 100%;
-    height:auto;
+    height: auto;
 }
 .caroul-button {
-    position:absolute;
-    top:50%;
+    position: absolute;
+    top: 50%;
     transform: translateY(-50%);
-    background:rgba(0,0,0,0.5);
-    color:white;
-    border:none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
     padding: 10px 20px;
-    cursor:pointer;
-    transition:background 0.3s ease;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 .prev {
-    left:0
+    left: 0;
 }
 
 .next {
-    right:0
+    right: 0;
 }
-
-
 
 /* Popup Promo Countdown */
 
 .countdown {
     background-color: #dc2626;
-    position:absolute;
-    bottom:0;
-    left:0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 50%;
-    height: 120px    ;    
+    height: 120px;
     padding: 0.75rem;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     gap: 0.5rem 0;
     align-items: center;
-    user-select: none;    
+    user-select: none;
     font-family: monospace;
 }
 
 .timer-container {
-    color:white;
+    color: white;
     font-size: 2rem;
-    display:flex;
+    display: flex;
     justify-content: space-around;
     border: 3px solid #1e293b;
-    position:relative;
+    position: relative;
     padding: 1rem 0 0 0;
     flex: 0 0;
     width: 100%;
 }
 
 .timer-container .timer-title {
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translate(-50%,-50%);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 0.75rem;
-    background-color:#dc2626;     
+    background-color: #dc2626;
     padding: 0 0.5rem;
     width: max-content;
-    font-weight: 600;    
+    font-weight: 600;
 }
 
 .timer-format {
     font-size: 0.75rem;
     line-height: 1.5rem;
-    font-weight:600
+    font-weight: 600;
 }
 
 .time {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     line-height: 1.75rem;
@@ -160,34 +170,34 @@
     background-color: #fde047;
     flex: 0 0;
     width: 100%;
-    border:none;    
-    color:red;
-    font-weight: bold;    
+    border: none;
+    color: red;
+    font-weight: bold;
     font-size: 0.8rem;
     transition: background-color 0.2s ease;
-    text-align:center;
+    text-align: center;
 }
 .countdown .buy-now:hover {
-    background-color:#eab308;
+    background-color: #eab308;
 }
 
 .offer-end {
-    position:absolute;
+    position: absolute;
     background-color: #eab308;
     font-size: 1rem;
     width: 100%;
-    text-align:center;
+    text-align: center;
 }
 
-@media (min-width: 768px) {     
+@media (min-width: 768px) {
     .countdown {
-        height: 150px
+        height: 150px;
     }
     .countdown .buy-now {
         width: 80%;
         font-size: 1rem;
     }
-    .timer-container{
+    .timer-container {
         font-size: 3rem;
     }
     .time {
@@ -195,9 +205,230 @@
     }
 
     .timer-container .timer-title {
-        font-size:1rem;
+        font-size: 1rem;
     }
     .offer-end {
         font-size: 1.75rem;
     }
+}
+
+/* ----------------------------- Promotion Page ----------------------------- */
+
+main.promotion {
+    padding: 0.75rem 1rem;
+}
+
+.promotion h1 {
+    font-size: 2rem;
+    display: inline;
+}
+
+.promotion .header {
+    margin-bottom: 1rem;
+}
+
+.promotion .instruction-open {
+    border: none;
+    background-color: #fbcfe8;
+    border-radius: 5px;
+    display: inline;
+    margin-left: 0.25rem;
+}
+
+.promotion .promotion-contents {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.promotion img {
+    max-width: 100%;
+    transition: filter 0.2s ease-in;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+}
+
+.promotion .img-container:hover img {
+    filter: brightness(30%);
+}
+
+.action-instruction {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.action-instruction .content {
+    background-color: white;
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin: 2rem auto;
+    max-width: 400px;
+}
+
+.action-instruction h2 {
+    font-size: 1.75rem;
+}
+
+.action-instruction .important {
+    background-color: #fed7aa;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+.action-instruction .instruction {
+    margin-top: 0.5rem;
+}
+
+.instruction-btn {
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-btn {
+    background-color: #2563eb;
+}
+
+.up-btn,
+.down-btn {
+    background-color: #22c55e;
+}
+
+.delete-btn {
+    background-color: #e11d48;
+}
+
+.edit-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.up-btn:hover,
+.down-btn:hover {
+    background-color: #16a34a;
+}
+
+.delete-btn:hover {
+    background-color: #be123c;
+}
+
+.instruction-close {
+    background-color: #0284c7;
+    color: white;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    transition: background-color 0.1s ease-in;
+}
+
+.instruction-close:hover {
+    background-color: #0369a1;
+}
+/*
+.mobile-action {
+    position: fixed;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-action .content {
+    background-color: white;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.mobile-action button {
+    width: 3rem;
+    height: 3rem;
+    font-size: 2rem;
+} */
+
+.promotion-contents .img-container {
+    position: relative;
+}
+
+.promotion-contents .img-container .action-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    gap: 0.25rem;
+    opacity: 0;
+    transition: opacity 0.1s ease-in;
+}
+
+.promotion-contents .img-container .action-container button {
+    border: none;
+}
+
+.promotion-contents img:hover + .action-container,
+.promotion-contents .img-container .action-container:hover {
+    opacity: 1;
+}
+
+.fixed-btns {
+    position: fixed;
+    bottom: 0.25rem;
+    right: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+}
+
+.add-new-image {
+    border: none;
+    background-color: #22c55e;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+.add-new-image:hover {
+    background-color: #16a34a;
+}
+
+.save-change {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    font-size: 1.25rem;
+    border-radius: 5px;
+}
+
+.save-change:disabled,
+.save-change:disabled:hover {
+    background-color: #60a5fa;
+}
+
+.save-change:hover {
+    background-color: #1d4ed8;
 }

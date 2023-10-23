@@ -6,8 +6,12 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "axios": "^1.1.2",
+        "axios": "^1.5.1",
         "laravel-vite-plugin": "^0.7.5",
         "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "@types/toastr": "^2.1.42",
+        "toastr": "^2.1.4"
     }
 }
