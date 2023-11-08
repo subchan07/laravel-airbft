@@ -16,6 +16,21 @@ const showToast = (message: string, type: "success" | "error" = "success") => {
 };
 
 const contactForm = document.getElementById("contact-form");
+const inputPhone = document.getElementById("phone_number");
+
+inputPhone?.addEventListener("input", (e) => {
+    const input = e.currentTarget as HTMLInputElement;
+    const inputValue = input.value;
+    const numericValue = inputValue.replace(/[^0-9]/g, "");
+    input.value = numericValue;
+});
+
+inputPhone?.addEventListener("paste", (e) => {
+    const input = e.currentTarget as HTMLInputElement;
+    const inputValue = input.value;
+    const numericValue = inputValue.replace(/[^0-9]/g, "");
+    input.value = numericValue;
+});
 
 contactForm?.addEventListener("submit", (e) => {
     e.preventDefault();

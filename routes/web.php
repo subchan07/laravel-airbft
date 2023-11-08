@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleContentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProductController;
@@ -213,7 +214,9 @@ Route::prefix('admin')->group(function () {
     Route::get('contacts', function () {
         $contacts = Contact::all();
         return view('contacts.index', compact('contacts'));
-    });
+    })->name('contact.index');
+
+    Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy');
 });
 
 Route::get('/storage/{filename}', function (string $filename) {

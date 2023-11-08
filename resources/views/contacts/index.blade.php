@@ -21,7 +21,15 @@
                                 <td>{{ $contact->phone_number }}</td>
                                 <td>{{ $contact->address }}</td>
                                 <td><a href="https://wa.me/+{{ $contact->phone_number }}"
-                                        class="btn btn-outline-primary">Kirim Pesan</a></td>
+                                        class="btn btn-outline-primary">Kirim Pesan</a>
+                                    <form method="post" action="{{ route('contact.destroy', $contact->id) }}"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('Delete')
+                                        <button href="{{ route('contact.destroy', $contact->id) }}"
+                                            class="btn btn-outline-danger">Hapus</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
