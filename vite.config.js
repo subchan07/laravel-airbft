@@ -11,6 +11,7 @@ export default defineConfig({
                 "resources/js/main.ts",
                 "resources/css/promotion.css",
                 'resources/js/promotions.ts',
+                "resources/js/app.ts",
             ],
             refresh: true,
         }),
