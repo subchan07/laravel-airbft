@@ -13,6 +13,7 @@ use App\Models\CategoryProduct;
 use App\Models\HomePage;
 use App\Models\MainPage;
 use App\Models\Product;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\WebsiteController;
 use App\Models\Promotion;
@@ -208,6 +209,11 @@ Route::prefix('admin')->group(function () {
         $promotions = Promotion::orderBy('order')->get();
         return view('promotion.index', compact('promotions'));
     })->name('promotion.index');
+
+    Route::get('contacts', function () {
+        $contacts = Contact::all();
+        return view('contacts.index', compact('contacts'));
+    });
 });
 
 Route::get('/storage/{filename}', function (string $filename) {

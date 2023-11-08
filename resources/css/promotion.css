@@ -56,6 +56,120 @@ main img {
     display: block;
 }
 
+/* Contact Form */
+
+.contact-form {
+    background-color: #0c0c0c;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.contact-form a {
+    color: inherit;
+    font-size: 0.5rem;
+}
+
+.contact-form .order-now {
+    background-color: #cb0505;
+    border: 0;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 0.75rem;
+    width: 13rem;
+    font-size: 1rem;
+    font-style: italic;
+    font-family: Helvetica;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+}
+
+.contact-form .order-now:hover {
+    background-color: #a00303;
+}
+
+.contact-form .logo {
+    width: 7rem;
+    margin-top: 1rem;
+}
+
+.contact-form input {
+    width: 13rem;
+    padding: 0.5rem 0.75rem;
+    outline: none;
+    border: 0;
+    font-weight: 700;
+}
+
+.contact-form .name {
+    margin-top: 1rem;
+}
+
+.contact-form input::placeholder {
+    font-weight: 900;
+    font-style: italic;
+    font-family: Helvetica;
+    color: rgb(172, 172, 172);
+}
+
+.contact-form .info-\&-consultation {
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 1.25rem;
+    font-weight: 900;
+    font-family: Helvetica;
+    margin-bottom: 0;
+}
+
+.contact-form .click-here {
+    background-color: #cb0505;
+    border: 0;
+    color: white;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 0.75rem;
+    width: 13rem;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-family: Helvetica;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+}
+
+.contact-form .click-here:hover {
+    background-color: #a00303;
+}
+
+.contact-form .socials {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 1rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-form .socials a {
+    display: flex;
+    align-items: center;
+    gap: 0 0.25rem;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.25rem;
+}
+
 @media (min-width: 768px) {
     footer {
         font-size: 1rem;
@@ -67,5 +181,29 @@ main img {
 
     footer {
         aspect-ratio: 16/1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .contact-form .logo {
+        width: 12rem;
+    }
+
+    .contact-form .order-now,
+    .contact-form .click-here,
+    .contact-form input {
+        width: 20rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .contact-form .socials {
+        max-width: 40rem;
+    }
+
+    .contact-form .order-now,
+    .contact-form .click-here,
+    .contact-form input {
+        width: 35rem;
     }
 }
