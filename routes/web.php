@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleContentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ProductController;
@@ -13,6 +14,7 @@ use App\Models\CategoryProduct;
 use App\Models\HomePage;
 use App\Models\MainPage;
 use App\Models\Product;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\WebsiteController;
 use App\Models\Promotion;
@@ -219,6 +221,13 @@ Route::prefix('admin')->group(function () {
         $promotions = Promotion::orderBy('order')->get();
         return view('promotion.index', compact('promotions'));
     })->name('promotion.index');
+
+    Route::get('contacts', function () {
+        $contacts = Contact::all();
+        return view('contacts.index', compact('contacts'));
+    })->name('contact.index');
+
+    Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->name('contact.destroy');
 });
 
 Route::get('/storage/{filename}', function (string $filename) {

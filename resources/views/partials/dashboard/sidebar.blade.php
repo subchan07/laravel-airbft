@@ -113,6 +113,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('contact.index') }}" class="nav-link">
+                        {{-- <i class="nav-icon fas fa-tachometer-alt"></i> --}}
+                        <p>
+                            Contacts
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('promotion.index') }}" class="nav-link">
                         <p>
                             Promotion Page

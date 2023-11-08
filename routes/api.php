@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PromotionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('/promotions', [PromotionController::class, 'store']);
 Route::put('/promotions', [PromotionController::class, 'update']);
+Route::apiResource('contacts', ContactController::class);
