@@ -24,7 +24,20 @@
     <main>
         @foreach ($promotions as $promotion)
             @if ($loop->index > 0)
-                <img src="/storage/{{ $promotion->path }}" alt="Section {{ $promotion->order }}">
+                @if ($loop->last)
+                    <a href="https://wa.me/+6282260000055?text=Hallo,%20Saya%20ingin%20bertanya%20tentang%20produk%20Airbft"
+                        target="_blank">
+                        <img src="/storage/{{ $promotion->path }}" alt="Section {{ $promotion->order }}">
+                    </a>
+                @elseif ($loop->index === 2)
+                    <div class="relative">
+                        <img src="/storage/{{ $promotion->path }}" alt="Section {{ $promotion->order }}">
+                        <a target="_blank" href="https://wa.me/+6282260000055?text=Hallo,%20Saya%20ingin%20bertanya%20tentang%20produk%20Airbft" class="order-now-absolute">Order Now</a>
+
+                    </div>
+                @else
+                    <img src="/storage/{{ $promotion->path }}" alt="Section {{ $promotion->order }}">
+                @endif
             @endif
         @endforeach
 

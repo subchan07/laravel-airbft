@@ -170,6 +170,25 @@ main img {
     gap: 0.25rem;
 }
 
+.order-now-absolute {
+    position:absolute;
+    background-color:#cb0505;
+    padding: 0.5rem 0.75rem;
+    color:white;
+    font-style:italic;
+    font-weight:bold;
+    border:0;
+    top:32.3%;
+    left:50%;
+    transform: translateX(-50%);
+    cursor:pointer;  
+    text-align:center;
+}
+
+.relative {
+    position:relative;
+}
+
 @media (min-width: 768px) {
     footer {
         font-size: 1rem;
@@ -181,6 +200,11 @@ main img {
 
     footer {
         aspect-ratio: 16/1;
+    }
+
+    .order-now-absolute {
+        width: 15rem;
+        font-size:1.75rem;
     }
 }
 
